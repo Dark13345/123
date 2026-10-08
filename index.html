@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Тарифы Elirox и наши серверы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Документ-расчёт: узкая колонка текста, таблицы на всю ширину колонки, метки источника у каждого факта */
+:root {
+  --bg: #f4f6f5;
+  --paper: #ffffff;
+  --ink: #17201f;
+  --muted: #5c6866;
+  --line: #d9e0de;
+  --accent: #0d6b66;
+  --accent-soft: #e1efed;
+  --warn: #8a5a00;
+  --warn-soft: #f7ecd6;
+  --chk: #1f6b2f;
+  --chk-soft: #e2f0e4;
+  --src: #3d4f8a;
+  --src-soft: #e6e9f5;
+  --pro: #5b3a9e;
+  --pro-soft: #efe9fa;
+  --pro-line: #cdbdf0;
+  --api: #1d5a9e;
+  --api-soft: #e6eef8;
+  --api-line: #b9cfea;
+  --grid: #3f6212;
+  --grid-soft: #eef4e2;
+  --grid-line: #c8dba5;
+  --res: #9a4d0b;
+  --res-soft: #fbefe3;
+  --res-line: #efcca9;
+  --buy: #1f7a4d;
+  --sell: #b4372c;
+  --own: #a3245f;
+  --own-soft: #fbeaf2;
+  --own-line: #efbfd4;
+  --five: #0e7490;
+  --five-soft: #e2f3f7;
+  --five-line: #aad8e3;
+  --f-display: "Unbounded", "Golos Text", system-ui, sans-serif;
+  --f-body: "Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111716; --paper: #182120; --ink: #e5ecea; --muted: #9aa8a5; --line: #2c3836;
+    --accent: #5cc4bb; --accent-soft: #173431; --warn: #e3b25a; --warn-soft: #3a2e17;
+    --chk: #7fd18f; --chk-soft: #1b3320; --src: #a4b2ec; --src-soft: #232a45;
+    --pro: #c6aef5; --pro-soft: #241c38; --pro-line: #45366b;
+    --api: #8fbdf0; --api-soft: #15253a; --api-line: #2d4a6e;
+    --grid: #b5d67a; --grid-soft: #1d2814; --grid-line: #3b5124;
+    --res: #f0a868; --res-soft: #2e2014; --res-line: #5a3d22;
+    --buy: #5fcf95; --sell: #f08a80;
+    --own: #f29bc3; --own-soft: #2f1622; --own-line: #5c2a42;
+    --five: #6cc9de; --five-soft: #10262d; --five-line: #24505c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111716; --paper: #182120; --ink: #e5ecea; --muted: #9aa8a5; --line: #2c3836;
+  --accent: #5cc4bb; --accent-soft: #173431; --warn: #e3b25a; --warn-soft: #3a2e17;
+  --chk: #7fd18f; --chk-soft: #1b3320; --src: #a4b2ec; --src-soft: #232a45;
+  --pro: #c6aef5; --pro-soft: #241c38; --pro-line: #45366b;
+  --api: #8fbdf0; --api-soft: #15253a; --api-line: #2d4a6e;
+  --grid: #b5d67a; --grid-soft: #1d2814; --grid-line: #3b5124;
+  --res: #f0a868; --res-soft: #2e2014; --res-line: #5a3d22;
+  --buy: #5fcf95; --sell: #f08a80;
+  --own: #f29bc3; --own-soft: #2f1622; --own-line: #5c2a42;
+  --five: #6cc9de; --five-soft: #10262d; --five-line: #24505c; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 920px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 64px; display: grid; gap: 40px; }
+header { display: grid; gap: 12px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(26px, 4.4vw, 38px); line-height: 1.15; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--f-display); font-weight: 500; font-size: 21px; line-height: 1.25; margin: 0; text-wrap: balance; }
+h3 { font-size: 17px; margin: 0; }
+p { margin: 0; max-width: 68ch; }
+.lead { font-size: 18px; color: var(--muted); max-width: 64ch; }
+section { display: grid; gap: 16px; min-width: 0; }
+.answer { background: var(--accent-soft); border-radius: 10px; padding: 22px 24px; display: grid; gap: 14px; }
+.answer .big { font-family: var(--f-display); font-size: clamp(22px, 3.6vw, 30px); color: var(--accent); line-height: 1.2; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.kpi { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.kpi .v { font-family: var(--f-mono); font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.kpi .k { font-size: 13px; color: var(--muted); }
+.tablebox { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 15px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--bg); }
+tr:last-child td { border-bottom: 0; }
+td.n, th.n { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.pick td { background: var(--accent-soft); }
+tr.pick td:first-child { font-weight: 600; }
+.no { color: var(--muted); }
+ul.notes { margin: 0; padding-left: 20px; display: grid; gap: 8px; max-width: 72ch; }
+.tag { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .02em; padding: 1px 8px; border-radius: 999px; white-space: nowrap; vertical-align: 1px; margin-left: 4px; }
+.t-chk { color: var(--chk); background: var(--chk-soft); }
+.t-src { color: var(--src); background: var(--src-soft); }
+.t-est { color: var(--warn); background: var(--warn-soft); }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 14px; color: var(--muted); }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+.formula { font-family: var(--f-mono); font-size: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; overflow-x: auto; line-height: 1.7; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.box { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pro { background: var(--pro-soft); border: 1px solid var(--pro-line); border-radius: 12px; padding: 24px; }
+.pro h2, .pro .eyebrow { color: var(--pro); }
+.pro .tablebox { border-color: var(--pro-line); }
+.pro tr.pick td { background: var(--pro-soft); }
+.pro .kpi { border-color: var(--pro-line); }
+.pro .kpi .v { color: var(--pro); }
+.api { background: var(--api-soft); border: 1px solid var(--api-line); border-radius: 12px; padding: 24px; }
+.api h2, .api .eyebrow, .api h3 { color: var(--api); }
+.api .tablebox, .api .box { border-color: var(--api-line); }
+ol.steps { margin: 0; padding-left: 22px; display: grid; gap: 10px; max-width: 72ch; }
+ol.steps li::marker { color: var(--api); font-weight: 700; }
+.vs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.vs .box p { color: var(--muted); }
+.gridsec { background: var(--grid-soft); border: 1px solid var(--grid-line); border-radius: 12px; padding: 24px; }
+.gridsec h2, .gridsec .eyebrow, .gridsec h3 { color: var(--grid); }
+.gridsec .tablebox, .gridsec .box { border-color: var(--grid-line); }
+.gridsec ol.steps li::marker { color: var(--grid); }
+.ressec { background: var(--res-soft); border: 1px solid var(--res-line); border-radius: 12px; padding: 24px; }
+.ressec h2, .ressec .eyebrow, .ressec h3 { color: var(--res); }
+.ressec .tablebox, .ressec .box { border-color: var(--res-line); }
+.diagram { background: var(--paper); border: 1px solid var(--grid-line); border-radius: 8px; padding: 12px; overflow-x: auto; }
+.diagram svg { display: block; width: 100%; min-width: 520px; height: auto; }
+.diagram text { font-family: var(--f-mono); font-size: 12px; fill: var(--ink); }
+.diagram .mut { fill: var(--muted); }
+.diagram .ls { stroke: var(--sell); stroke-width: 2; }
+.diagram .lb { stroke: var(--buy); stroke-width: 2; }
+.diagram .lc { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.diagram .ts { fill: var(--sell); }
+.diagram .tb { fill: var(--buy); }
+.diagram .arr { stroke: var(--grid); stroke-width: 1.5; fill: none; }
+.diagram .arrh { fill: var(--grid); }
+.own { background: var(--own-soft); border: 1px solid var(--own-line); border-radius: 12px; padding: 24px; }
+.own h2, .own .eyebrow, .own h3 { color: var(--own); }
+.own .tablebox, .own .box, .own .kpi { border-color: var(--own-line); }
+.own .kpi .v { color: var(--own); }
+.own tr.pick td { background: var(--own-soft); }
+.verdict { background: var(--paper); border: 2px solid var(--vc, var(--ink)); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
+.verdict .lbl { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--vc, var(--ink)); }
+.verdict p { font-size: 17px; font-weight: 500; line-height: 1.5; max-width: 72ch; }
+.verdict p + p { font-size: 15px; font-weight: 400; color: var(--muted); }
+.gridsec { --vc: var(--grid); } .ressec { --vc: var(--res); } .pro { --vc: var(--pro); }
+.own { --vc: var(--own); } .api { --vc: var(--api); }
+.capacity { background: var(--ink); color: var(--bg); border-radius: 10px; padding: 16px 18px; display: grid; gap: 8px; }
+.capacity .lbl { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.capacity p { font-size: 17px; line-height: 1.5; max-width: 72ch; }
+.capacity b { font-weight: 700; }
+.capacity ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 15px; }
+.five { background: var(--five-soft); border: 1px solid var(--five-line); border-radius: 12px; padding: 24px; --vc: var(--five); }
+.five h2, .five .eyebrow, .five h3 { color: var(--five); }
+.five .tablebox, .five .box, .five .kpi { border-color: var(--five-line); }
+.five .kpi .v { color: var(--five); }
+.five tr.pick td { background: var(--five-soft); }
+.pos { color: var(--buy); font-weight: 600; }
+.neg { color: var(--sell); font-weight: 600; }
+footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Стенд роботов NPB · расчёт на 07.10.2026</div>
+  <h1>Тарифы Elirox и сколько клиентов вмещает один сервер</h1>
+  <p class="lead">Сколько берёт конкурент за роботов, сколько ресурсов съедает один наш робот на сервере и во что обойдутся серверы на 100, 500 и 1000 клиентов</p>
+  <div class="legend" aria-label="Откуда взяты цифры">
+    <span><span class="tag t-chk">замер</span> проверили сами на нашем сервере</span>
+    <span><span class="tag t-src">источник</span> сайт или сервер компании</span>
+    <span><span class="tag t-est">оценка</span> расчёт из замера, вживую не проверено</span>
+  </div>
+</header>
+
+<div class="answer">
+  <div class="eyebrow">Коротко</div>
+  <div class="big">Один сервер как у нас (4 ядра, 8 ГБ) — около 40 клиентов</div>
+  <p>Считаем, что у клиента один торговый счёт и на нём один робот. Тогда сервер обходится примерно в <b>€0,21–0,26 в месяц на клиента</b>, а 1000 клиентов — около <b>€220 в месяц</b> за все серверы. Для сравнения: самый дешёвый тариф Elirox с роботом на реальном счёте стоит $19,99 в месяц. <span class="tag t-est">оценка</span></p>
+</div>
+
+<section>
+  <h2>Тарифы Elirox</h2>
+  <p>Цены со страницы тарифов Elirox и из ответа их сервера в нашем тестовом аккаунте, сентябрь 2026. <span class="tag t-src">источник</span></p>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Тариф</th><th class="n">В месяц</th><th class="n">При оплате за год</th><th class="n">Счетов</th><th class="n">Роботов на реальных счетах</th><th>Сетка (GRID)</th><th>Любой брокер</th></tr></thead>
+      <tbody>
+        <tr><td>FREE</td><td class="n">$0</td><td class="n no">—</td><td class="n">2</td><td class="n">0</td><td class="no">нет</td><td class="no">нет</td></tr>
+        <tr><td>Basic</td><td class="n">$19,99</td><td class="n">$15,99</td><td class="n">2</td><td class="n">2</td><td class="no">нет*</td><td class="no">нет</td></tr>
+        <tr><td>Advanced</td><td class="n">$39,99</td><td class="n">$31,99</td><td class="n">5</td><td class="n">5</td><td>да</td><td class="no">нет</td></tr>
+        <tr><td>Pro</td><td class="n">$99,99</td><td class="n">$79,99</td><td class="n">10</td><td class="n">25</td><td>да</td><td>да</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="notes">
+    <li>На всех тарифах можно держать до 10 роботов на демо-счетах. На FREE реальной торговли нет, только демо с виртуальными $10 000. <span class="tag t-src">источник</span></li>
+    <li>* На странице тарифов у Basic написано «Создание GRID ботов», а сервер Elirox отдаёт <span class="mono">isGridAvailable: false</span>, и экран оплаты тоже показывает «✗ Создание GRID ботов». Реально сетка доступна с Advanced. <span class="tag t-chk">замер</span></li>
+    <li>На Basic и Advanced подключаются только брокеры-партнёры Elirox. Из ЕС нам был доступен только Exness. Остальные ~100 брокеров и ручное подключение счёта — только на Pro. Поэтому демо-счёт MT5 мы подключали через Pro-аккаунт коллеги. <span class="tag t-chk">замер</span></li>
+    <li>Первый месяц Basic бесплатно, если открыть счёт у брокера-партнёра через Elirox и внести от $100. Скидка за год 20%, оплата через Stripe. <span class="tag t-src">источник</span></li>
+    <li>ИИ-помощник Elirox Agent ограничен по запросам в день: 200 на FREE, 500 на Basic, 1000 на Advanced, 4000 на Pro. <span class="tag t-src">источник</span></li>
+  </ul>
+
+  <div class="verdict"><div class="lbl">Вывод</div><p>Робот на реальном счёте у Elirox стоит от $19,99 в месяц (Basic, 2 робота), но сетка там доступна только с $39,99 (Advanced, 5 роботов), а подключить любого брокера — только за $99,99 (Pro).</p><p>Для клиента NPB это значит: чтобы запустить сетку у Elirox, он заплатит минимум $39,99 в месяц, а если NPB нет среди партнёров Elirox — $99,99.</p></div>
+</section>
+
+<section class="gridsec" id="grid">
+  <div class="eyebrow">Наш робот</div>
+  <h2>Как работает наша сетка</h2>
+  <p>В момент запуска робот берёт текущую цену за центр и расставляет вокруг неё лимитные ордера через равный шаг: ниже центра — на покупку, выше — на продажу. У каждого ордера тейк-профит ровно на один шаг ближе к центру. Стоп-лосса нет. <span class="tag t-chk">замер</span></p>
+  <div class="diagram" role="img" aria-label="Схема сетки робота №1: 5 ордеров на продажу выше центра 1.11865 и 5 на покупку ниже, шаг 30 пунктов">
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+      <text x="20" y="18" class="mut">Робот №1, EURUSD, шаг 30 пунктов (3 пипса), 5 + 5 уровней</text>
+      <line x1="150" y1="34" x2="430" y2="34" class="ls"/><text x="78" y="38">1.12015</text><text x="440" y="38" class="ts">SELL LIMIT · уровень 5</text>
+      <line x1="150" y1="58" x2="430" y2="58" class="ls"/><text x="78" y="62">1.11985</text><text x="440" y="62" class="ts">SELL LIMIT · уровень 4</text>
+      <line x1="150" y1="82" x2="430" y2="82" class="ls"/><text x="78" y="86">1.11955</text><text x="440" y="86" class="ts">SELL LIMIT · уровень 3</text>
+      <line x1="150" y1="106" x2="430" y2="106" class="ls"/><text x="78" y="110">1.11925</text><text x="440" y="110" class="ts">SELL LIMIT · уровень 2</text>
+      <line x1="150" y1="130" x2="430" y2="130" class="ls"/><text x="78" y="134">1.11895</text><text x="440" y="134" class="ts">SELL LIMIT · уровень 1</text>
+      <line x1="150" y1="154" x2="430" y2="154" class="lc"/><text x="78" y="158">1.11865</text><text x="440" y="158" class="mut">центр = цена запуска</text>
+      <line x1="150" y1="178" x2="430" y2="178" class="lb"/><text x="78" y="182">1.11835</text><text x="440" y="182" class="tb">BUY LIMIT · уровень −1</text>
+      <line x1="150" y1="202" x2="430" y2="202" class="lb"/><text x="78" y="206">1.11805</text><text x="440" y="206" class="tb">BUY LIMIT · уровень −2</text>
+      <line x1="150" y1="226" x2="430" y2="226" class="lb"/><text x="78" y="230">1.11775</text><text x="440" y="230" class="tb">BUY LIMIT · уровень −3</text>
+      <line x1="150" y1="250" x2="430" y2="250" class="lb"/><text x="78" y="254">1.11745</text><text x="440" y="254" class="tb">BUY LIMIT · уровень −4</text>
+      <line x1="150" y1="274" x2="430" y2="274" class="lb"/><text x="78" y="278">1.11715</text><text x="440" y="278" class="tb">BUY LIMIT · уровень −5</text>
+      <path d="M250 106 C 228 112, 228 124, 250 128" class="arr"/><polygon points="244,124 252,130 254,121" class="arrh"/>
+      <text x="166" y="121" class="mut" style="font-size:11px">TP</text>
+      <path d="M330 178 C 352 172, 352 160, 330 156" class="arr"/><polygon points="336,160 328,154 326,163" class="arrh"/>
+      <text x="358" y="170" class="mut" style="font-size:11px">TP</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><b>Цена опускается и задевает уровень покупки.</b> BUY LIMIT превращается в открытую покупку. Её тейк-профит — уровень выше, на шаг ближе к центру.</li>
+    <li><b>Цена возвращается на шаг вверх.</b> Покупка закрывается по тейку с прибылью в один шаг. Робот тут же ставит на освободившийся уровень такой же BUY LIMIT.</li>
+    <li><b>Выше центра всё зеркально:</b> продажа открывается при росте цены и закрывается, когда цена откатывает на шаг вниз.</li>
+    <li><b>Пока цена ходит туда-обратно внутри сетки,</b> робот снова и снова зарабатывает по одному шагу на каждом уровне.</li>
+  </ol>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Робот</th><th class="n">Шаг</th><th class="n">Лот</th><th class="n">Прибыль одной сделки</th><th class="n">Ширина сетки от центра</th></tr></thead>
+      <tbody>
+        <tr><td>№1, EURUSD</td><td class="n">30 п. = 3 пипса</td><td class="n">0,01</td><td class="n">$0,30</td><td class="n">±15 пипсов</td></tr>
+        <tr><td>№2, XAUUSD</td><td class="n">3000 п. = $3</td><td class="n">0,01</td><td class="n">≈ $3,00</td><td class="n">±$15</td></tr>
+        <tr><td>№3, EURUSD</td><td class="n">1000 п. = 100 пипсов</td><td class="n">0,01</td><td class="n">$10,00</td><td class="n">±500 пипсов</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="notes">
+    <li><b>Главный риск — тренд.</b> Если цена уходит в одну сторону и не возвращается, робот набирает позиции против движения: до 5 по 0,01 лота. Они висят с плавающим минусом, пока цена не вернётся. Стоп-лосса нет, а сетка за ценой не сдвигается. <span class="tag t-chk">замер</span></li>
+    <li><b>Шаг подбирают под инструмент.</b> Меньше спреда нельзя: сделки не окупят спред. Слишком широкий шаг — сделок не будет вовсе, как у робота №3 ниже.</li>
+    <li><b>«Остановить»</b> снимает все отложенные ордера робота и закрывает его позиции по рынку. Плавающий результат в этот момент становится реальным.</li>
+    <li>У Elirox сетка умнее: она сама перестраивается вокруг новой цены и умеет вставать на паузу по фильтрам, например по торговой сессии. У нас этого пока нет. <span class="tag t-chk">замер</span></li>
+  </ul>
+
+  <div class="verdict"><div class="lbl">Итого</div><p>Сетка зарабатывает по одному шагу каждый раз, когда цена задевает уровень и возвращается. Прибыль сделки = шаг × лот: у наших роботов $0,30 на EURUSD, около $3 на золоте и $10 на шаге 100 пипсов.</p><p>Убыток сетка получает при сильном движении в одну сторону: позиции копятся против цены, стоп-лосса нет. Шаг — главный параметр: он должен быть больше спреда и меньше обычного движения цены за час-два.</p></div>
+</section>
+
+<section class="ressec" id="results">
+  <div class="eyebrow">Тест на демо-счетах NPB</div>
+  <h2>Как прошли сделки за первые сутки</h2>
+  <p>С 07.10 15:49 до 08.10 06:44 по времени сервера (UTC). Три робота на трёх демо-счетах, лот 0,01. Данные — отчёты роботов из терминалов на 06:44, сверены с балансами счетов. <span class="tag t-chk">замер</span></p>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Робот</th><th class="n">Закрыто сделок</th><th class="n">Прибыль закрытых</th><th class="n">Баланс: старт → сейчас</th><th class="n">Открыто сейчас</th></tr></thead>
+      <tbody>
+        <tr><td>№1 · EURUSD · шаг 30</td><td class="n">14</td><td class="n pos">+$4,28</td><td class="n">5 002,49 → 5 006,77</td><td class="n">5 продаж, <span class="neg">−$3,42</span></td></tr>
+        <tr class="pick"><td>№2 · XAUUSD · шаг 3000</td><td class="n">42</td><td class="n pos">+$127,85</td><td class="n">10 000,00 → 10 127,85</td><td class="n">1 продажа, <span class="neg">−$2,10</span></td></tr>
+        <tr><td>№3 · EURUSD · шаг 1000</td><td class="n">0</td><td class="n">$0</td><td class="n">5 000,00 → 5 000,00</td><td class="n">нет, 10 ордеров ждут</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Прибыль закрытых сделок у каждого робота совпадает с ростом баланса его счёта до цента. Убыточных закрытых сделок нет ни у одного: при сетке без стоп-лосса позиции закрываются только по тейку, а риск сидит в открытых позициях. <span class="tag t-chk">замер</span></p>
+
+  <div class="two">
+    <div class="box">
+      <h3>Робот №1: ровно по $0,30 за сделку</h3>
+      <p>14 сделок, каждая $0,30–0,34, то есть ровно один шаг. Больше всего сделок — в первые часы и утром: вечером и ночью EURUSD стоял почти на месте. Цена ушла выше центра, сейчас 1,12011, поэтому открыты 5 продаж с небольшим минусом. Они закроются по тейкам, когда цена откатит вниз. <span class="tag t-chk">замер</span></p>
+      <p>Эквити счёта ниже на $13,49, а не на $3,42: на этом же счёте ещё открыты позиции робота №6 с моего компьютера. На итог робота №1 они не влияют. <span class="tag t-chk">замер</span></p>
+    </div>
+    <div class="box">
+      <h3>Робот №2: золото ходило внутри сетки</h3>
+      <p>Золото всю ночь гуляло в пределах сетки ±$15, и робот 42 раза открыл и закрыл сделку, в основном по $3–3,5. Пик — около полуночи и в 5 утра по UTC, по 6–8 сделок в час. Три сделки дали меньше ($1,79, $0,74 и $0,64): это позиции, которые держались в момент ночного переноса, с них списался своп. <span class="tag t-est">оценка</span></p>
+      <p>Это лучший результат из трёх: шаг $3 соразмерен тому, как золото ходит за час.</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Почему робот №3 не сделал ни одной сделки</h3>
+    <p>Шаг 1000 пунктов на EURUSD — это 100 пипсов. Робот стартовал около цены 1,11981, и ближайшие ордера стоят на 1,10981 и 1,12981, в 100 пипсах от неё. Чтобы открылась первая сделка, EURUSD должен был пройти 100 пипсов в одну сторону. За сутки он ходил в коридоре примерно 1,1183–1,1207, то есть около 24 пипсов: это видно по сделкам робота №1 на том же инструменте. Сейчас цена 1,12011, почти в центре сетки. <span class="tag t-chk">замер</span></p>
+    <p>Робот исправен, просто с таким шагом он рассчитан на крупные движения, которые бывают раз в несколько дней или недель. Для показа EURUSD нужен шаг 20–50 пунктов: тогда сделки пойдут в течение часа, как у робота №1. <span class="tag t-est">оценка</span></p>
+  </div>
+
+  <ul class="notes">
+    <li><b>Найдена и исправлена ошибка стенда.</b> Робот показывает в отчёте только последние 60 закрытых сделок, а стенд дописывал их в свой журнал, только когда кто-то открывал страницу робота. Ночью страницу никто не открывал, и журнал отставал: в нём было 18 сделок робота №2 вместо 42. С 08.10 стенд пополняет журнал сам каждые 15 секунд. Сделки не терялись, итоги выше взяты из отчётов роботов. <span class="tag t-chk">замер</span></li>
+    <li>Это одни сутки на демо-счетах с минимальным лотом. По ним видно, что механика работает: ордера ставятся, сделки закрываются по тейкам, уровни восстанавливаются. О доходности по таким данным судить нельзя.</li>
+    <li>Самое наглядное для показа — сетка, у которой шаг соразмерен обычному движению цены за день: как у робота №2 на золоте.</li>
+  </ul>
+
+  <div class="verdict"><div class="lbl">Итого</div><p>За первые 15 часов три робота закрыли 56 сделок на +$132,13, ни одной убыточной. Почти весь результат дал робот на золоте (+$127,85), робот №1 заработал +$4,28, робот №3 не торговал из-за слишком широкого шага.</p><p>Механика стенда работает: ордера ставятся, закрываются по тейкам и восстанавливаются, цифры сходятся с балансами счетов до цента. О доходности стратегии по одним суткам на демо судить нельзя.</p></div>
+</section>
+
+<section>
+  <h2>Что ест один наш робот</h2>
+  <p>Замер на сервере коллеги, где сейчас работает стенд: Windows 10, процессор AMD EPYC, 4 ядра, 8 ГБ памяти, хостинг Contabo. Робот №1 — советник MQL4, сетка 5+5 ордеров на EURUSD, счёт NPB. Мерили 60 секунд в торговые часы. <span class="tag t-chk">замер</span></p>
+  <div class="kpis">
+    <div class="kpi"><div class="v">~100 МБ</div><div class="k">памяти на один терминал MT4 с роботом (65 МБ личной)</div></div>
+    <div class="kpi"><div class="v">5,7%</div><div class="k">одного ядра в среднем на терминал</div></div>
+    <div class="kpi"><div class="v">64 МБ</div><div class="k">диска на копию терминала для счёта</div></div>
+    <div class="kpi"><div class="v">1,7% · 54 МБ</div><div class="k">сам сайт стенда (Python), общий на всех клиентов</div></div>
+  </div>
+  <p>Больше всего процессора робот тратит на отчёт для страницы: раз в секунду он записывает баланс, ордера и 150 последних свечей для графика. Если писать отчёт раз в 3–5 секунд, на сервер поместится в 2–3 раза больше роботов. <span class="tag t-est">оценка</span></p>
+
+  <div class="verdict"><div class="lbl">Итого</div><p>Один робот занимает примерно 1,5% тестового сервера: 1,4% процессора, 1,2% памяти и меньше 0,1% диска. Сервер такого размера у Contabo стоит около €10,49 в месяц, значит, в чистом виде робот «съедает» около €0,16 в месяц.</p><p>С запасом на Windows, сайт стенда и всплески нагрузки на сервер помещается около 40 роботов, поэтому в расчётах ниже берём €0,26 на робота в месяц. Сколько платит за этот сервер коллега, мы не знаем: €10,49 — цена такого же тарифа на сайте Contabo.</p></div>
+</section>
+
+<section>
+  <h2>Сколько роботов помещается на сервер</h2>
+  <p>Каждому счёту клиента нужен свой работающий терминал MT4. Поэтому ёмкость сервера определяют память и процессор. Считаем с запасом:</p>
+  <div class="formula">
+    память: (память сервера − 2,5 ГБ на Windows и стенд) ÷ 120 МБ на робота<br>
+    процессор: ядра × 60% средней загрузки ÷ 6% на робота = ядра × 10<br>
+    вмещает = меньшее из двух
+  </div>
+  <p>60% вместо 100% оставлено на всплески: новости, открытие рынка, обновления Windows, вход по удалённому столу. Цены Contabo с их сайта на октябрь 2026, это ставка при договоре на 24 месяца с налогами. Лицензия Windows стоит отдельно, от €4,99 в месяц. <span class="tag t-src">источник</span></p>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Сервер Contabo</th><th class="n">Ядер / память</th><th class="n">По памяти</th><th class="n">По процессору</th><th class="n">Вмещает</th><th class="n">€ в месяц</th><th class="n">€ на робота</th></tr></thead>
+      <tbody>
+        <tr><td>Cloud VPS 4 — по размеру как у нас</td><td class="n">4 / 8 ГБ</td><td class="n">45</td><td class="n">40</td><td class="n"><b>40</b></td><td class="n">10,49</td><td class="n">0,26</td></tr>
+        <tr class="pick"><td>Cloud VPS 6</td><td class="n">6 / 12 ГБ</td><td class="n">79</td><td class="n">60</td><td class="n"><b>60</b></td><td class="n">12,49</td><td class="n">0,21</td></tr>
+        <tr><td>Cloud VPS 8</td><td class="n">8 / 24 ГБ</td><td class="n">179</td><td class="n">80</td><td class="n"><b>80</b></td><td class="n">18,99</td><td class="n">0,24</td></tr>
+        <tr><td>Cloud VPS 12</td><td class="n">12 / 48 ГБ</td><td class="n">379</td><td class="n">120</td><td class="n"><b>120</b></td><td class="n">29,99</td><td class="n">0,25</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="notes">
+    <li>«€ в месяц» = цена сервера + Windows €4,99. Растёт ли цена Windows вместе с числом ядер, на сайте Contabo не сказано. Это надо уточнить, на больших серверах сумма может выйти выше. <span class="tag t-est">оценка</span></li>
+    <li>Везде упираемся в процессор, памяти хватает с избытком. Выгоднее всего Cloud VPS 6: больше ядер на евро. <span class="tag t-est">оценка</span></li>
+    <li>Числа «вмещает» — расчёт из замера одного робота. Пока на сервере не работали 20–40 роботов одновременно, это прогноз. <span class="tag t-est">оценка</span></li>
+  </ul>
+
+  <div class="verdict"><div class="lbl">Вывод</div><p>На тестовый сервер (4 ядра, 8 ГБ, около €10,49 в месяц с Windows) поместится примерно 40 роботов. Упираемся в процессор, памяти хватило бы на 45.</p><p>Выгоднее всего сервер на 6 ядер и 12 ГБ: около 60 роботов за €12,49 в месяц, то есть €0,21 на робота. Это прогноз по замеру одного робота, пока не проверенный нагрузочным тестом.</p></div>
+</section>
+
+<section>
+  <h2>Бюджет на серверы</h2>
+  <p>Рабочие серверы — Cloud VPS 6 по 60 роботов. Плюс один центральный сервер для сайта, базы и учётных записей, ему Windows не нужна (Cloud VPS 4 на Linux, €5,50). Клиент = один счёт = один робот. <span class="tag t-est">оценка</span></p>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Клиентов</th><th class="n">Рабочих серверов</th><th class="n">€ в месяц всего</th><th class="n">€ на клиента</th><th class="n">€ в год</th></tr></thead>
+      <tbody>
+        <tr><td>40 (сегодняшний сервер коллеги)</td><td class="n">1</td><td class="n">≈ 10</td><td class="n">0,26</td><td class="n">≈ 125</td></tr>
+        <tr><td>100</td><td class="n">2</td><td class="n">30,48</td><td class="n">0,30</td><td class="n">≈ 366</td></tr>
+        <tr><td>500</td><td class="n">9</td><td class="n">117,91</td><td class="n">0,24</td><td class="n">≈ 1 415</td></tr>
+        <tr class="pick"><td>1000</td><td class="n">17</td><td class="n">217,83</td><td class="n">0,22</td><td class="n">≈ 2 614</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="notes">
+    <li>Если у клиента 2–3 счёта с роботами, серверов нужно во столько же раз больше: считать надо не клиентов, а работающих роботов.</li>
+    <li>Стоит заложить +1 запасной сервер на каждые 10: переносить роботов при сбое или обслуживании. На 1000 клиентов это ещё ≈ €25 в месяц. <span class="tag t-est">оценка</span></li>
+    <li>Раньше, без замера, мы оценивали серверы в $0,6–1,5 на клиента. Замер показал, что робот легче, чем мы закладывали.</li>
+    <li>В расчёт не входят разработка, поддержка, платёжная система, уведомления и время людей на сопровождение. Это только аренда серверов.</li>
+  </ul>
+
+  <div class="verdict"><div class="lbl">Итого</div><p>Если у клиента один робот, серверы на 1000 клиентов обойдутся примерно в €218 в месяц, или около €2 600 в год — €0,22 на клиента в месяц.</p><p>На 100 клиентов — около €30 в месяц, на 500 — около €118. Сюда входит только аренда серверов, без разработки и поддержки.</p></div>
+</section>
+
+<section class="pro" id="pro">
+  <div class="eyebrow">Отдельный расчёт</div>
+  <h2>Если клиент как на тарифе Pro у Elirox</h2>
+  <p>На Pro клиенту доступны 10 торговых счетов и 25 роботов на реальных счетах за $99,99 в месяц. <span class="tag t-src">источник</span> Каждому счёту нужен свой терминал MT4, а несколько роботов на одном счёте работают в одном терминале на разных графиках. Ресурсы считаем по роботам: по замеру около 6% ядра и 120 МБ памяти с запасом на каждого. Серверы — Cloud VPS 6 по 60 роботов, плюс один центральный. <span class="tag t-est">оценка</span></p>
+  <div class="kpis">
+    <div class="kpi"><div class="v">≈ €5,2</div><div class="k">серверы в месяц на клиента, который включил все 25 роботов</div></div>
+    <div class="kpi"><div class="v">≈ €2,1</div><div class="k">если включил 10 роботов, по одному на каждый счёт</div></div>
+    <div class="kpi"><div class="v">2–6</div><div class="k">таких клиентов на одном сервере Cloud VPS 6</div></div>
+    <div class="kpi"><div class="v">≈ 6%</div><div class="k">доля серверов в цене Pro при полной загрузке (если 1 € ≈ 1,15 $)</div></div>
+  </div>
+  <div class="capacity">
+    <div class="lbl">Сколько клиентов на один VPS</div>
+    <p>Тестовый сервер (4 ядра, 8 ГБ, ≈ €10,49 в месяц) вмещает <b>1 клиента</b> с 25 роботами или <b>4 клиентов</b> с 10 роботами. Сервер на 6 ядер (≈ €12,49) — <b>2 клиентов</b> с 25 роботами или <b>6 клиентов</b> с 10 роботами.</p>
+    <ul><li>Считаем 40 роботов на тестовый сервер и 60 на сервер на 6 ядер, с запасом на Windows и всплески. <span class="tag t-est">оценка</span></li></ul>
+  </div>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Клиентов на Pro</th><th class="n">Роботов</th><th class="n">Рабочих серверов</th><th class="n">€ в месяц</th><th class="n">€ на клиента</th><th class="n">Выручка по цене Pro, $ в месяц</th></tr></thead>
+      <tbody>
+        <tr><td>100, все 25 роботов</td><td class="n">2 500</td><td class="n">42</td><td class="n">530,08</td><td class="n">5,30</td><td class="n">9 999</td></tr>
+        <tr><td>100, по 10 роботов</td><td class="n">1 000</td><td class="n">17</td><td class="n">217,83</td><td class="n">2,18</td><td class="n">9 999</td></tr>
+        <tr class="pick"><td>1000, все 25 роботов</td><td class="n">25 000</td><td class="n">417</td><td class="n">5 213,83</td><td class="n">5,21</td><td class="n">99 990</td></tr>
+        <tr><td>1000, по 10 роботов</td><td class="n">10 000</td><td class="n">167</td><td class="n">2 091,33</td><td class="n">2,09</td><td class="n">99 990</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="notes">
+    <li>Даже при полной загрузке серверы съедают около 6% цены тарифа. Основные расходы будут не на серверы, а на разработку, поддержку и привлечение клиентов. <span class="tag t-est">оценка</span></li>
+    <li>Сколько роботов реально включают клиенты Pro, мы не знаем. Elirox эту статистику не показывает, поэтому в таблице два крайних случая: 25 и 10 роботов. <span class="tag t-est">оценка</span></li>
+    <li>Сейчас стенд позволяет один робот на счёт. Для модели Pro нужно научить его запускать несколько роботов на одном счёте, на разных инструментах в одном терминале. Как это повлияет на нагрузку, не проверено.</li>
+    <li>417 серверов на 1000 клиентов уже много: их надо где-то разворачивать, обновлять и следить за ними. На таком масштабе выгоднее серверы покрупнее и путь через Manager API брокера (см. ниже).</li>
+  </ul>
+
+  <div class="verdict"><div class="lbl">Вывод</div><p>Клиент с возможностями Pro (10 счетов, 25 роботов) обойдётся нам в €2,1–5,2 серверов в месяц, в зависимости от того, сколько роботов он реально включит. Это 2–6% от цены Pro у Elirox ($99,99).</p><p>На 1000 таких клиентов — от €2 100 до €5 200 в месяц и от 167 до 417 серверов. На таком масштабе нужны серверы крупнее или путь через Manager API.</p></div>
+</section>
+
+<section class="own" id="own-tariff">
+  <div class="eyebrow">Наш возможный тариф</div>
+  <h2>Тариф «1 счёт — 10 роботов»</h2>
+  <p>Пример тарифа: клиент подключает один брокерский счёт NPB и запускает на нём до 10 роботов, например на разных инструментах. Для сравнения, у Elirox Basic — 2 счёта и 2 робота за $19,99, Advanced — 5 счетов и 5 роботов за $39,99. <span class="tag t-src">источник</span></p>
+  <p>Счёт один, значит, и терминал MT4 на клиента один: все 10 роботов работают в нём на разных графиках. Память на клиента выходит небольшой, а процессор растёт с числом роботов: каждый раз в секунду пишет свой отчёт. Считаем около 6% ядра на робота, как в замере, и около 100 МБ на терминал плюс примерно 20 МБ на каждый следующий график. <span class="tag t-est">оценка</span></p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="v">≈ 0,6 ядра</div><div class="k">и ≈ 0,3 ГБ памяти на клиента с 10 роботами</div></div>
+    <div class="kpi"><div class="v">6</div><div class="k">таких клиентов на Cloud VPS 6 (6 ядер, 12 ГБ)</div></div>
+    <div class="kpi"><div class="v">≈ €2,1</div><div class="k">серверы в месяц на клиента, если включены все 10 роботов</div></div>
+    <div class="kpi"><div class="v">≈ €0,6</div><div class="k">если в среднем включено 3 робота из 10</div></div>
+  </div>
+  <div class="capacity">
+    <div class="lbl">Сколько клиентов на один VPS</div>
+    <p>Тестовый сервер (4 ядра, 8 ГБ, ≈ €10,49 в месяц) вмещает <b>4 клиента</b>, если у всех включены 10 роботов, или <b>13 клиентов</b>, если в среднем по 3 робота. Сервер на 6 ядер (≈ €12,49) — <b>6</b> и <b>20 клиентов</b>.</p>
+    <ul><li>Считаем 40 роботов на тестовый сервер и 60 на сервер на 6 ядер, с запасом на Windows и всплески. <span class="tag t-est">оценка</span></li></ul>
+  </div>
+
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Клиентов</th><th class="n">Роботов</th><th class="n">Рабочих серверов</th><th class="n">€ в месяц</th><th class="n">€ на клиента</th></tr></thead>
+      <tbody>
+        <tr><td>100, у всех 10 роботов</td><td class="n">1 000</td><td class="n">17</td><td class="n">217,83</td><td class="n">2,18</td></tr>
+        <tr><td>100, в среднем 3 робота</td><td class="n">300</td><td class="n">5</td><td class="n">67,95</td><td class="n">0,68</td></tr>
+        <tr><td>500, у всех 10 роботов</td><td class="n">5 000</td><td class="n">84</td><td class="n">1 054,66</td><td class="n">2,11</td></tr>
+        <tr><td>500, в среднем 3 робота</td><td class="n">1 500</td><td class="n">25</td><td class="n">317,75</td><td class="n">0,64</td></tr>
+        <tr class="pick"><td>1000, у всех 10 роботов</td><td class="n">10 000</td><td class="n">167</td><td class="n">2 091,33</td><td class="n">2,09</td></tr>
+        <tr><td>1000, в среднем 3 робота</td><td class="n">3 000</td><td class="n">50</td><td class="n">630,00</td><td class="n">0,63</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Серверы — Cloud VPS 6 по 60 роботов плюс один центральный, как в расчётах выше. <span class="tag t-est">оценка</span></p>
+
+  <ul class="notes">
+    <li><b>Сколько это от цены.</b> Если поставить цену как у Elirox Basic, $19,99, серверы займут около 12% при полной загрузке и около 4% при трёх роботах (если 1 € ≈ 1,15 $). <span class="tag t-est">оценка</span></li>
+    <li><b>Что нужно доделать в стенде.</b> Сейчас на счёте может работать только один робот. Для этого тарифа стенд должен запускать несколько роботов в одном терминале, на разных графиках, у каждого — свой номер-метка. Сейчас этого нет.</li>
+    <li><b>Риск для депозита клиента.</b> 10 сеток по 5 уровней на одном счёте — это до 50 позиций по 0,01 лота одновременно. На небольшом депозите нужна проверка маржи перед запуском каждого следующего робота и ограничение суммарного объёма.</li>
+    <li><b>Как сделать дешевле.</b> Если 10 сеток ведёт один советник в одном графике и пишет один общий отчёт, процессора на клиента уйдёт в разы меньше, чем у 10 отдельных роботов. Тогда на сервер поместится не 6, а несколько десятков таких клиентов. Не проверено. <span class="tag t-est">оценка</span></li>
+    <li>Расчёт памяти на дополнительный график мы не замеряли: 20 МБ — предположение. По процессору у нас есть только замер одного робота.</li>
+  </ul>
+
+  <div class="verdict"><div class="lbl">Вывод</div><p>При тарифе «1 счёт — 10 роботов» один клиент обходится в €0,6–2,1 серверов в месяц: €0,6, если он в среднем держит 3 робота, и €2,1, если все 10. На тестовый сервер поместится 4 таких клиента при полной загрузке, на сервер на 6 ядер — 6.</p><p>При цене как у Elirox Basic ($19,99) на серверы уйдёт 4–12% выручки. Чтобы тариф заработал, стенд нужно доработать: сейчас на счёте может работать только один робот.</p></div>
+</section>
+
+<section class="five" id="five-tariff">
+  <div class="eyebrow">Наш возможный тариф</div>
+  <h2>Тариф «5 счетов — 5 роботов»</h2>
+  <p>Пример тарифа: клиент подключает до 5 брокерских счетов NPB и запускает до 5 роботов, по одному на счёт. Это как Advanced у Elirox: 5 счетов и 5 роботов за $39,99 в месяц. <span class="tag t-src">источник</span></p>
+  <p>У каждого счёта свой терминал MT4, поэтому клиент с 5 роботами — это ровно 5 таких роботов, как в нашем замере: около 6% ядра и 120 МБ памяти с запасом на каждого. Ресурсы на клиента — в 5 раз больше, чем на одного робота. <span class="tag t-est">оценка</span></p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="v">≈ 0,3 ядра</div><div class="k">и ≈ 0,6 ГБ памяти на клиента с 5 роботами</div></div>
+    <div class="kpi"><div class="v">8 / 12</div><div class="k">таких клиентов на тестовый сервер / на Cloud VPS 6</div></div>
+    <div class="kpi"><div class="v">≈ €1,05</div><div class="k">серверы в месяц на клиента, если включены все 5 роботов</div></div>
+    <div class="kpi"><div class="v">≈ €0,43</div><div class="k">если в среднем включено 2 робота из 5</div></div>
+  </div>
+  <div class="capacity">
+    <div class="lbl">Сколько клиентов на один VPS</div>
+    <p>Тестовый сервер (4 ядра, 8 ГБ, ≈ €10,49 в месяц) вмещает <b>8 клиентов</b>, если у всех включены 5 роботов, или <b>20 клиентов</b>, если в среднем по 2 робота. Сервер на 6 ядер (≈ €12,49) — <b>12</b> и <b>30 клиентов</b>.</p>
+    <ul><li>Считаем 40 роботов на тестовый сервер и 60 на сервер на 6 ядер, с запасом на Windows и всплески. <span class="tag t-est">оценка</span></li></ul>
+  </div>
+
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Клиентов</th><th class="n">Роботов</th><th class="n">Рабочих серверов</th><th class="n">€ в месяц</th><th class="n">€ на клиента</th></tr></thead>
+      <tbody>
+        <tr><td>100, у всех 5 роботов</td><td class="n">500</td><td class="n">9</td><td class="n">117,91</td><td class="n">1,18</td></tr>
+        <tr><td>100, в среднем 2 робота</td><td class="n">200</td><td class="n">4</td><td class="n">55,46</td><td class="n">0,55</td></tr>
+        <tr><td>500, у всех 5 роботов</td><td class="n">2 500</td><td class="n">42</td><td class="n">530,08</td><td class="n">1,06</td></tr>
+        <tr><td>500, в среднем 2 робота</td><td class="n">1 000</td><td class="n">17</td><td class="n">217,83</td><td class="n">0,44</td></tr>
+        <tr class="pick"><td>1000, у всех 5 роботов</td><td class="n">5 000</td><td class="n">84</td><td class="n">1 054,66</td><td class="n">1,05</td></tr>
+        <tr><td>1000, в среднем 2 робота</td><td class="n">2 000</td><td class="n">34</td><td class="n">430,16</td><td class="n">0,43</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Серверы — Cloud VPS 6 по 60 роботов плюс один центральный, как в расчётах выше. <span class="tag t-est">оценка</span></p>
+
+  <ul class="notes">
+    <li><b>Сколько это от цены.</b> При цене как у Elirox Advanced, $39,99, серверы займут около 3% выручки при полной загрузке и около 1% при двух роботах. При цене $19,99 — около 6% и 2,5% (если 1 € ≈ 1,15 $). <span class="tag t-est">оценка</span></li>
+    <li><b>Стенд к такому тарифу почти готов.</b> Сейчас клиент уже может подключить несколько счетов и запустить по роботу на каждом. Доделать нужно только сам тариф: лимит в 5 счетов и 5 роботов и оплату.</li>
+    <li><b>Сравнение с тарифом «1 счёт — 10 роботов».</b> Там 10 роботов в одном терминале, здесь 5 роботов в 5 терминалах. По процессору на робота выходит одинаково, по памяти этот тариф тяжелее, но память у нас не узкое место.</li>
+    <li>5 счетов — это 5 разных депозитов, поэтому риск сетки на каждом счёте тот же, что у одного робота: до 5 позиций по 0,01 лота.</li>
+  </ul>
+
+  <div class="verdict"><div class="lbl">Вывод</div><p>При тарифе «5 счетов — 5 роботов» один клиент обходится в €0,43–1,05 серверов в месяц: €0,43, если он в среднем держит 2 робота, и €1,05, если все 5. На тестовый сервер поместится 8 таких клиентов при полной загрузке, на сервер на 6 ядер — 12.</p><p>При цене как у Elirox Advanced ($39,99) на серверы уйдёт 1–3% выручки. Это самый простой для запуска тариф: стенд уже умеет работать с несколькими счетами одного клиента.</p></div>
+</section>
+
+<section>
+  <h2>Что проверить, прежде чем закладывать в бюджет</h2>
+  <div class="two">
+    <div class="box"><h3>Нагрузочный тест</h3><p>Запустить на одном сервере 20, потом 40 роботов на демо-счетах и замерить процессор в часы новостей. Это превратит прогноз «40 на сервер» в проверенную цифру.</p></div>
+    <div class="box"><h3>Реже писать отчёт</h3><p>Перевести отчёт робота с раза в секунду на раз в 3–5 секунд и сравнить нагрузку. Если подтвердится, ёмкость сервера вырастет в 2–3 раза.</p></div>
+    <div class="box"><h3>Цена Windows у Contabo</h3><p>Уточнить у Contabo цену лицензии Windows Server для серверов на 6, 8 и 12 ядер и цену без договора на 24 месяца.</p></div>
+    <div class="box"><h3>Путь без терминалов</h3><p>Если брокер NPB даст доступ к Manager API, роботы смогут торговать без отдельного терминала на каждый счёт, и серверов понадобится в разы меньше. Подробно — в разделе ниже.</p></div>
+  </div>
+
+  <div class="verdict"><div class="lbl">Вывод</div><p>Все цифры ёмкости и бюджета выше — прогноз по замеру одного робота. Чтобы закладывать их в бюджет, нужен нагрузочный тест: 20, затем 40 роботов на одном сервере.</p><p>Тест займёт 1–2 дня. Если вдобавок перевести отчёт робота на раз в 3–5 секунд, серверов может понадобиться в 2–3 раза меньше.</p></div>
+</section>
+
+<section class="api" id="manager-api">
+  <div class="eyebrow">Разбор варианта</div>
+  <h2>Путь без терминалов: Manager API брокера NPB</h2>
+  <p>Manager API — это программный доступ к серверу MetaTrader со стороны брокера. Через него работают CRM брокеров, системы контроля рисков и сервисы копирования сделок. Доступ выдаёт сам брокер: создаёт логин менеджера с нужными правами и разрешает подключение с наших IP-адресов. <span class="tag t-src">источник</span></p>
+
+  <div class="vs">
+    <div class="box"><h3>Сейчас: терминал на каждый счёт</h3><p>Для каждого счёта клиента на нашем сервере работает отдельная копия MT4 с советником. Терминал входит в счёт по паролю клиента, робот торгует изнутри терминала. Так же устроен Elirox. <span class="tag t-chk">замер</span></p></div>
+    <div class="box"><h3>С Manager API: одно подключение</h3><p>Наш сервис один раз подключается к серверу NPB как менеджер и видит все счета, которые клиенты к нему привязали. Робот — программа на нашем сервере — сам ставит и снимает ордера на этих счетах. Терминалы не нужны. <span class="tag t-est">оценка</span></p></div>
+  </div>
+
+  <h3>Как это будет выглядеть</h3>
+  <ol class="steps">
+    <li>NPB создаёт для нас логин менеджера на демо-сервере NMarkets-Demo, с правом торговать только по счетам отдельной группы, и разрешает доступ с IP нашего сервера.</li>
+    <li>Клиент в нашем кабинете привязывает счёт NPB и подтверждает согласие на торговлю роботом. Торговый пароль от счёта ему вводить не нужно.</li>
+    <li>Брокер переводит этот счёт в группу, где наш менеджер может торговать.</li>
+    <li>Наш сервис через одно подключение получает котировки, ордера и сделки всех привязанных счетов в реальном времени.</li>
+    <li>Робот по каждому счёту ставит сетку лимитных ордеров и следит за исполнением, как сейчас это делает советник внутри терминала.</li>
+  </ol>
+
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Что сравниваем</th><th>Терминалы (как сейчас)</th><th>Manager API</th></tr></thead>
+      <tbody>
+        <tr><td>Серверов на 1000 клиентов</td><td>17 + центральный, ≈ €218 в месяц <span class="tag t-est">оценка</span></td><td>1–2 сервера, ≈ €15–30 в месяц <span class="tag t-est">оценка</span></td></tr>
+        <tr><td>Пароль от счёта клиента</td><td>Храним у себя зашифрованным</td><td>Не нужен</td></tr>
+        <tr><td>Подключение счёта</td><td>30–120 секунд: копия терминала входит в счёт <span class="tag t-chk">замер</span></td><td>Сразу после того, как брокер перевёл счёт в группу <span class="tag t-est">оценка</span></td></tr>
+        <tr><td>Обновления MT4</td><td>Каждая копия обновляется сама, отсюда сегодняшняя ошибка при первом подключении <span class="tag t-chk">замер</span></td><td>Терминалов нет, обновлять нечего</td></tr>
+        <tr><td>Брокеры</td><td>Любой брокер MT4, нужен только его терминал</td><td>Только NPB</td></tr>
+        <tr><td>Зависимость от брокера</td><td>Никакой: работаем как обычный клиент</td><td>Полная: без согласия и прав от NPB не работает</td></tr>
+        <tr><td>Готовность</td><td>Работает на стенде</td><td>Робота нужно переписать: из советника MQL4 в программу на сервере</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ul class="notes">
+    <li><b>Почему у Elirox терминалы, а у нас может быть иначе.</b> Elirox подключает около 100 брокеров, и вряд ли каждый из них даёт стороннему сервису менеджерский доступ. Поэтому у них ферма терминалов. Мы работаем с одним брокером, NPB, и можем договориться о том, что конкуренту недоступно. <span class="tag t-est">оценка</span></li>
+    <li><b>Ответственность.</b> Менеджерский доступ даёт торговать по многим счетам сразу. Права нужно ограничить одной группой счетов и только торговлей, без вывода денег и смены паролей, а сервер с этим доступом защищать строже, чем сейчас.</li>
+    <li><b>Согласие клиента.</b> Торговля по счёту клиента со стороны брокера, скорее всего, требует отдельного согласия или договора. Как это оформить у NPB, мы не изучали.</li>
+    <li><b>Как сделки будут видны клиенту.</b> Сейчас сделки помечены как сделанные советником, с меткой нашего робота. Какую пометку получат сделки через Manager API, нужно уточнить у NPB. <span class="tag t-est">оценка</span></li>
+    <li><b>MT4 и MT5.</b> Официальной открытой документации по Manager API для MT4 мы не нашли: библиотеку и описание получает брокер. <span class="tag t-est">оценка</span> Для MT5 есть пакет <span class="mono">MT5Manager</span> для Python и Web API по HTTP с описанием на сайте MetaQuotes — с MT5 такой путь проще. <span class="tag t-src">источник</span></li>
+    <li>Есть и готовые облачные посредники с Manager API (например, MetaApi), но им тоже нужен менеджерский доступ от брокера, и данные клиентов пойдут через третью сторону. <span class="tag t-src">источник</span></li>
+  </ul>
+
+  <h3>Что спросить у NPB</h3>
+  <ol class="steps">
+    <li>Готовы ли выдать логин менеджера на демо-сервере NMarkets-Demo для пробы, с правом торговать только по счетам тестовой группы?</li>
+    <li>Какая версия сервера MT4 и Manager API, и дадут ли библиотеку с документацией?</li>
+    <li>С каких IP можно подключаться и есть ли ограничения по числу запросов?</li>
+    <li>Как будут помечены сделки, открытые менеджером, в истории клиента?</li>
+    <li>Как оформить согласие клиента на торговлю роботом по его счёту?</li>
+    <li>Есть ли у NPB сервер MT5 и можно ли сразу делать на нём: там готовый пакет для Python.</li>
+  </ol>
+  <p>Если NPB согласится, следующий шаг — сделать на демо-доступе одного робота-сетку через Manager API и сравнить его со стендом по нагрузке и скорости. <span class="tag t-est">оценка</span></p>
+
+  <div class="verdict"><div class="lbl">Вывод</div><p>Если NPB даст менеджерский доступ, серверы на 1000 клиентов подешевеют примерно в 10 раз (с €218 до €15–30 в месяц), а хранить пароли клиентов станет не нужно. Это преимущество, которого нет у Elirox.</p><p>Цена: полная зависимость от NPB и переписанный робот. Первый шаг — спросить у NPB демо-доступ менеджера на NMarkets-Demo, вопросы перечислены выше.</p></div>
+</section>
+
+<footer>
+  <div>Источники: страница тарифов <a href="https://elirox.com/pricing/" target="_blank" rel="noopener">elirox.com/pricing</a>; ответ сервера Elirox <span class="mono">/api/v3/subscriptions/config</span> в нашем тестовом аккаунте (24.09.2026); цены серверов <a href="https://contabo.com/en/vps/" target="_blank" rel="noopener">contabo.com/en/vps</a> и лицензии Windows <a href="https://contabo.com/en/windows-licenses/" target="_blank" rel="noopener">contabo.com/en/windows-licenses</a> (07.10.2026); замер на сервере стенда 07.10.2026. Manager API: <a href="https://support.metaquotes.net/en/docs/mt5/api/webapi_main" target="_blank" rel="noopener">MetaTrader 5 Web API</a>, <a href="https://pypi.org/project/MT5Manager/" target="_blank" rel="noopener">пакет MT5Manager</a>, <a href="https://metaapi.cloud/docs/manager/" target="_blank" rel="noopener">MetaApi Manager API</a>.</div>
+  <div>Работаем только на демо-счетах.</div>
+</footer>
+
+</div>
+
+</body>
+</html>
