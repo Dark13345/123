@@ -156,6 +156,16 @@ ol.steps li::marker { color: var(--api); font-weight: 700; }
 .verdict p + p { font-size: 15px; font-weight: 400; color: var(--muted); }
 .gridsec { --vc: var(--grid); } .ressec { --vc: var(--res); } .pro { --vc: var(--pro); }
 .own { --vc: var(--own); } .api { --vc: var(--api); }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+section[id] { scroll-margin-top: 16px; }
+.toc { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; display: grid; gap: 10px; }
+.toc ol { margin: 0; padding-left: 22px; columns: 2 280px; column-gap: 32px; }
+.toc li { break-inside: avoid; padding-block: 3px; font-variant-numeric: tabular-nums; }
+.toc li::marker { color: var(--muted); font-size: 14px; }
+.toc a { color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.toc a:hover { color: var(--accent); text-decoration: underline; }
+.toc a i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
 .capacity { background: var(--ink); color: var(--bg); border-radius: 10px; padding: 16px 18px; display: grid; gap: 8px; }
 .capacity .lbl { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
 .capacity p { font-size: 17px; line-height: 1.5; max-width: 72ch; }
@@ -192,7 +202,25 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <p>Считаем, что у клиента один торговый счёт и на нём один робот. Тогда сервер обходится примерно в <b>€0,21–0,26 в месяц на клиента</b>, а 1000 клиентов — около <b>€220 в месяц</b> за все серверы. Для сравнения: самый дешёвый тариф Elirox с роботом на реальном счёте стоит $19,99 в месяц. <span class="tag t-est">оценка</span></p>
 </div>
 
-<section>
+<nav class="toc" aria-label="Содержание">
+  <div class="eyebrow">Содержание</div>
+  <ol>
+    <li><a href="#elirox">Тарифы Elirox</a></li>
+    <li><a href="#grid"><i style="background:var(--grid)"></i>Как работает наша сетка</a></li>
+    <li><a href="#results"><i style="background:var(--res)"></i>Как прошли сделки за первые сутки</a></li>
+    <li><a href="#robot">Что ест один наш робот</a></li>
+    <li><a href="#capacity">Сколько роботов помещается на сервер</a></li>
+    <li><a href="#budget">Бюджет на серверы</a></li>
+    <li><a href="#pro"><i style="background:var(--pro)"></i>Если клиент как на тарифе Pro у Elirox</a></li>
+    <li><a href="#own-tariff"><i style="background:var(--own)"></i>Тариф «1 счёт — 10 роботов»</a></li>
+    <li><a href="#five-tariff"><i style="background:var(--five)"></i>Тариф «5 счетов — 5 роботов»</a></li>
+    <li><a href="#check">Что проверить, прежде чем закладывать в бюджет</a></li>
+    <li><a href="#manager-api"><i style="background:var(--api)"></i>Путь без терминалов: Manager API</a></li>
+    <li><a href="#plan">План улучшений сервиса</a></li>
+  </ol>
+</nav>
+
+<section id="elirox">
   <h2>Тарифы Elirox</h2>
   <p>Цены со страницы тарифов Elirox и из ответа их сервера в нашем тестовом аккаунте, сентябрь 2026. <span class="tag t-src">источник</span></p>
   <div class="tablebox">
@@ -313,7 +341,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <div class="verdict"><div class="lbl">Итого</div><p>За 17 часов три робота закрыли 78 сделок на +$170,53, ни одной убыточной. Почти весь результат дал робот на золоте (+$162,71), робот №1 заработал +$7,82, робот №3 не торговал из-за слишком широкого шага. Открытые позиции сейчас в минусе всего на $3,67.</p><p>Механика стенда работает: ордера ставятся, закрываются по тейкам и восстанавливаются, цифры сходятся с балансами счетов до цента. О доходности стратегии по одним суткам на демо судить нельзя.</p></div>
 </section>
 
-<section>
+<section id="robot">
   <h2>Что ест один наш робот</h2>
   <p>Замер на сервере коллеги, где сейчас работает стенд: Windows 10, процессор AMD EPYC, 4 ядра, 8 ГБ памяти, хостинг Contabo. Робот №1 — советник MQL4, сетка 5+5 ордеров на EURUSD, счёт NPB. Мерили 60 секунд в торговые часы. <span class="tag t-chk">замер</span></p>
   <div class="kpis">
@@ -327,7 +355,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <div class="verdict"><div class="lbl">Итого</div><p>Один робот занимает примерно 1,5% тестового сервера: 1,4% процессора, 1,2% памяти и меньше 0,1% диска. Сервер такого размера у Contabo стоит около €10,49 в месяц, значит, в чистом виде робот «съедает» около €0,16 в месяц.</p><p>С запасом на Windows, сайт стенда и всплески нагрузки на сервер помещается около 40 роботов, поэтому в расчётах ниже берём €0,26 на робота в месяц. Сколько платит за этот сервер коллега, мы не знаем: €10,49 — цена такого же тарифа на сайте Contabo.</p></div>
 </section>
 
-<section>
+<section id="capacity">
   <h2>Сколько роботов помещается на сервер</h2>
   <p>Каждому счёту клиента нужен свой работающий терминал MT4. Поэтому ёмкость сервера определяют память и процессор. Считаем с запасом:</p>
   <div class="formula">
@@ -356,7 +384,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <div class="verdict"><div class="lbl">Вывод</div><p>На тестовый сервер (4 ядра, 8 ГБ, около €10,49 в месяц с Windows) поместится примерно 40 роботов. Упираемся в процессор, памяти хватило бы на 45.</p><p>Выгоднее всего сервер на 6 ядер и 12 ГБ: около 60 роботов за €12,49 в месяц, то есть €0,21 на робота. Это прогноз по замеру одного робота, пока не проверенный нагрузочным тестом.</p></div>
 </section>
 
-<section>
+<section id="budget">
   <h2>Бюджет на серверы</h2>
   <p>Рабочие серверы — Cloud VPS 6 по 60 роботов. Плюс один центральный сервер для сайта, базы и учётных записей, ему Windows не нужна (Cloud VPS 4 на Linux, €5,50). Клиент = один счёт = один робот. <span class="tag t-est">оценка</span></p>
   <div class="tablebox">
@@ -503,7 +531,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <div class="verdict"><div class="lbl">Вывод</div><p>При тарифе «5 счетов — 5 роботов» один клиент обходится в €0,43–1,05 серверов в месяц: €0,43, если он в среднем держит 2 робота, и €1,05, если все 5. На тестовый сервер поместится 8 таких клиентов при полной загрузке, на сервер на 6 ядер — 12.</p><p>При цене как у Elirox Advanced ($39,99) на серверы уйдёт 1–3% выручки. Это самый простой для запуска тариф: стенд уже умеет работать с несколькими счетами одного клиента.</p></div>
 </section>
 
-<section>
+<section id="check">
   <h2>Что проверить, прежде чем закладывать в бюджет</h2>
   <div class="two">
     <div class="box"><h3>Нагрузочный тест</h3><p>Запустить на одном сервере 20, потом 40 роботов на демо-счетах и замерить процессор в часы новостей. Это превратит прогноз «40 на сервер» в проверенную цифру.</p></div>
