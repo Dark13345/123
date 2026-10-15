@@ -231,6 +231,40 @@ section[id] { scroll-margin-top: 16px; }
 .flow .arr { color: var(--ops); font-size: 22px; line-height: 1; text-align: center; }
 .flow .arr::before { content: "→"; }
 @media (max-width: 760px) { .flow { grid-template-columns: minmax(0, 1fr); } .flow .arr::before { content: "↓"; } }
+/* чек-лист переезда: статусы пунктов */
+.todosec { background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); border-radius: 12px; padding: 24px; --vc: var(--accent); }
+.todosec h2, .todosec .eyebrow, .todosec h3 { color: var(--accent); }
+.todo-prog { display: grid; gap: 8px; margin: 14px 0 18px; }
+.todo-prog .bar { height: 10px; border-radius: 5px; background: var(--paper); border: 1px solid var(--line); overflow: hidden; }
+.todo-prog .bar i { display: block; height: 100%; background: var(--chk); border-radius: 5px; }
+.todo-prog .txt { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; color: var(--muted); }
+.todo-prog .txt b { color: var(--ink); }
+.todo-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.todo { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.todo .ico { grid-row: span 3; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--line); color: var(--muted); font: 600 13px/1 var(--f-mono); }
+.todo .ico svg { width: 16px; height: 16px; }
+.todo .head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.todo .head b { font-size: 16px; }
+.todo .who { font-size: 12px; color: var(--muted); }
+.todo p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.5; }
+.todo .done-at { font-size: 13px; color: var(--chk); font-weight: 600; }
+.st { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.st::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.st-done { color: var(--chk); background: var(--chk-soft); }
+.st-work { color: var(--warn); background: var(--warn-soft); }
+.st-you { color: var(--src); background: var(--src-soft); }
+.st-wait { color: var(--muted); background: color-mix(in srgb, var(--muted) 12%, transparent); }
+.todo.is-done { border-color: color-mix(in srgb, var(--chk) 45%, var(--line)); }
+.todo.is-done .ico { background: var(--chk); border-color: var(--chk); color: var(--paper); }
+.todo.is-done .head b { text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--chk) 60%, transparent); }
+.todo.is-work .ico { border-color: var(--warn); color: var(--warn); }
+.todo.is-you .ico { border-color: var(--src); color: var(--src); }
+.sub { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; font-size: 14px; }
+.sub li { display: flex; gap: 8px; align-items: baseline; color: var(--muted); }
+.sub li::before { content: ""; flex: none; width: 13px; height: 13px; border-radius: 3px; border: 1.5px solid var(--line); transform: translateY(2px); }
+.sub li.ok { color: var(--ink); }
+.sub li.ok::before { background: var(--chk); border-color: var(--chk); box-shadow: inset 0 0 0 2px var(--paper); }
+.st-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .gifts { background: var(--gift-soft); border: 1px solid var(--gift-line); border-radius: 12px; padding: 24px; --vc: var(--gift); }
 .gifts h2, .gifts .eyebrow, .gifts h3 { color: var(--gift); }
 .gifts .box, .gifts .tablebox { border-color: var(--gift-line); }
@@ -289,6 +323,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
     <li><a href="#budget">Бюджет на серверы</a></li>
     <li><a href="#vps"><i style="background:var(--vps)"></i>Наш VPS: где купить и аналоги</a></li>
     <li><a href="#ops"><i style="background:var(--ops)"></i>Как управлять многими серверами</a></li>
+    <li><a href="#move"><i style="background:var(--accent)"></i>Переезд на свой VPS: чек-лист</a></li>
     <li><a href="#pro"><i style="background:var(--pro)"></i>Если клиент как на тарифе Pro у Elirox</a></li>
     <li><a href="#own-tariff"><i style="background:var(--own)"></i>Тариф «1 счёт — 10 роботов»</a></li>
     <li><a href="#five-tariff"><i style="background:var(--five)"></i>Тариф «5 счетов — 5 роботов»</a></li>
@@ -614,6 +649,70 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   </div>
 
   <div class="verdict"><div class="lbl">Итого</div><p>100 клиентов — это около 8 рабочих серверов и один центральный, и вручную ими никто не управляет: агенты на серверах, диспетчер в центре, переезд счетов и уведомления делают это сами. Перезапускается только центральный сервер, и только при выкладке нового кода. <span class="tag t-est">вывод, не проверено</span></p><p>Начинать стоит с переезда на свой VPS — и сразу сделать его так, как в рабочем сервисе: автозапуск, выкладка одной командой, копии базы, уведомления. Агенты и диспетчер нужны с появлением второго сервера. Если NPB даст Manager API, ферма терминалов не понадобится вовсе — поэтому спросить NPB стоит до того, как строить ферму.</p></div>
+</section>
+
+<section class="todosec" id="move">
+  <div class="eyebrow">Чек-лист</div>
+  <h2>Переезд на свой VPS: чек-лист</h2>
+  <p>Уходим с тестового сервера коллеги на свой и сразу настраиваем новый сервер так, как он будет работать в рабочем сервисе (см. <a href="#ops">«Как управлять многими серверами»</a>). Статус пунктов обновляется по мере выполнения.</p>
+
+  <div class="todo-prog">
+    <div class="bar" role="progressbar" aria-label="Сделано пунктов" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><i style="width:0%"></i></div>
+    <div class="txt"><span>Сделано <b>0 из 8</b></span><span>В работе <b>1</b></span><span>Ждут вас <b>2</b></span><span>Обновлено 15.10.2026</span></div>
+    <div class="st-legend"><span class="st st-done">сделано</span><span class="st st-work">в работе</span><span class="st st-you">ждёт вас</span><span class="st st-wait">не начато</span></div>
+  </div>
+
+  <ol class="todo-list">
+    <li class="todo is-you">
+      <span class="ico">1</span>
+      <div class="head"><b>Купить сервер</b><span class="st st-you">ждёт вас</span></div>
+      <p>Contabo Cloud VPS 4 с Windows: около €12,40 в месяц при договоре на 24 месяца, около €13,50 помесячно. Прислать в чат только адрес сервера, доступы — не в чат.</p>
+      <p><b>Оплата.</b> Contabo принимает карты Visa и Mastercard, PayPal, Skrill, банковский перевод; криптовалюту — нет. При добавлении карты блокируется около €1 для проверки. <span class="tag t-src">источник</span> Российские карты за рубежом не работают, поэтому нужна иностранная карта или PayPal на иностранную карту; есть платёжные посредники, но их надёжность мы не проверяли. <span class="tag t-est">вывод, не проверено</span></p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">2</span>
+      <div class="head"><b>Перенести стенд</b><span class="st st-wait">не начато</span><span class="who">делаем мы</span></div>
+      <p>Код, база, ключи входа через Google и Apple, советник, терминал-шаблон; роботов остановить на старом сервере и запустить на новом. MT4 коллеги и его TrendGuard на тестовом сервере не трогаем.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">3</span>
+      <div class="head"><b>Стенд — служба Windows</b><span class="st st-wait">не начато</span><span class="who">делаем мы</span></div>
+      <p>Вместо ручного start.bat: стенд сам поднимается после сбоя и перезагрузки сервера.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">4</span>
+      <div class="head"><b>Выкладка одной командой</b><span class="st st-wait">не начато</span><span class="who">делаем мы</span></div>
+      <p>Один скрипт заливает новые файлы и перезапускает службу. Ручные перезапуски больше не нужны.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">5</span>
+      <div class="head"><b>Ежедневная копия базы</b><span class="st st-wait">не начато</span><span class="who">нужно решение, куда класть</span></div>
+      <p>Раз в сутки — копия базы за пределы сервера: ваш компьютер, облако или приватный GitHub.</p>
+    </li>
+    <li class="todo is-work">
+      <span class="ico">6</span>
+      <div class="head"><b>Уведомления в Telegram</b><span class="st st-work">в работе</span></div>
+      <p>Стенд упал, нет цен дольше 5 минут, терминал завис, память выше 85%.</p>
+      <ul class="sub">
+        <li class="ok">Бот для уведомлений создан</li>
+        <li>Токен бота сохранён в файле на компьютере (не в чате)</li>
+        <li>Боту написано /start — чтобы бот знал, куда слать</li>
+        <li>Уведомления подключены и проверены</li>
+      </ul>
+    </li>
+    <li class="todo is-you">
+      <span class="ico">7</span>
+      <div class="head"><b>Свой домен</b><span class="st st-you">ждёт вас</span></div>
+      <p>Вместо 158-220-104-158.sslip.io. Купить домен, например в GoDaddy; мы настроим DNS, сертификат и адреса возврата для входа через Google и Apple.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">8</span>
+      <div class="head"><b>Задел под второй сервер</b><span class="st st-wait">не начато</span><span class="who">делаем мы</span></div>
+      <p>У каждого счёта в базе — поле «на каком сервере работает его терминал». Пока везде один сервер, с появлением второго переделывать не придётся.</p>
+    </li>
+  </ol>
+
+  <div class="verdict"><div class="lbl">Итого</div><p>Первый шаг — купить сервер: для оплаты Contabo нужна иностранная карта или PayPal. Параллельно доделываем уведомления в Telegram: бот уже создан.</p><p>Пункты 3–5 и 8 делаются вместе с переездом и почти не добавляют нагрузки на сервер.</p></div>
 </section>
 
 <section class="pro" id="pro">
