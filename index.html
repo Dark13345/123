@@ -56,6 +56,9 @@
   --vps: #475569;
   --vps-soft: #eef1f5;
   --vps-line: #cbd3de;
+  --ops: #b42318;
+  --ops-soft: #fdecea;
+  --ops-line: #f2c1bb;
   --f-display: "Unbounded", "Golos Text", system-ui, sans-serif;
   --f-body: "Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
@@ -77,6 +80,7 @@
     --load: #5fd3a5; --load-soft: #10291f; --load-line: #245243;
     --mail: #e3c35a; --mail-soft: #2a2410; --mail-line: #56491c;
     --vps: #a9b8cc; --vps-soft: #1a2029; --vps-line: #334055;
+    --ops: #f19a8f; --ops-soft: #2d1614; --ops-line: #5c2b26;
   }
 }
 :root[data-theme="dark"] {
@@ -94,6 +98,7 @@
   --load: #5fd3a5; --load-soft: #10291f; --load-line: #245243;
   --mail: #e3c35a; --mail-soft: #2a2410; --mail-line: #56491c;
   --vps: #a9b8cc; --vps-soft: #1a2029; --vps-line: #334055;
+  --ops: #f19a8f; --ops-soft: #2d1614; --ops-line: #5c2b26;
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.55; }
@@ -211,6 +216,21 @@ section[id] { scroll-margin-top: 16px; }
 .vpssec h2, .vpssec .eyebrow, .vpssec h3 { color: var(--vps); }
 .vpssec .box, .vpssec .tablebox { border-color: var(--vps-line); }
 .vpssec tr.pick td { background: color-mix(in srgb, var(--vps) 12%, var(--paper)); }
+.opssec { background: var(--ops-soft); border: 1px solid var(--ops-line); border-radius: 12px; padding: 24px; --vc: var(--ops); }
+.opssec h2, .opssec .eyebrow, .opssec h3 { color: var(--ops); }
+.opssec .box, .opssec .tablebox { border-color: var(--ops-line); }
+.opssec ol.steps li::marker { color: var(--ops); }
+.opssec tr.pick td { background: color-mix(in srgb, var(--ops) 10%, var(--paper)); }
+/* схема «центр → рабочие серверы → брокер» */
+.flow { display: grid; grid-template-columns: minmax(0, .8fr) auto minmax(0, 1.3fr) auto minmax(0, 1.3fr) auto minmax(0, .8fr); align-items: center; gap: 8px; margin: 18px 0; }
+.flow .node { background: var(--paper); border: 1.5px solid var(--ops-line); border-radius: 10px; padding: 12px 14px; min-width: 0; }
+.flow .node b { display: block; color: var(--ops); font-size: 14px; margin-bottom: 4px; }
+.flow .node span { display: block; font-size: 13px; color: var(--muted); line-height: 1.45; }
+.flow .node.main { border-color: var(--ops); border-width: 2px; }
+.flow .stack { display: grid; gap: 6px; min-width: 0; }
+.flow .arr { color: var(--ops); font-size: 22px; line-height: 1; text-align: center; }
+.flow .arr::before { content: "→"; }
+@media (max-width: 760px) { .flow { grid-template-columns: minmax(0, 1fr); } .flow .arr::before { content: "↓"; } }
 .gifts { background: var(--gift-soft); border: 1px solid var(--gift-line); border-radius: 12px; padding: 24px; --vc: var(--gift); }
 .gifts h2, .gifts .eyebrow, .gifts h3 { color: var(--gift); }
 .gifts .box, .gifts .tablebox { border-color: var(--gift-line); }
@@ -268,6 +288,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
     <li><a href="#capacity">Сколько роботов помещается на сервер</a></li>
     <li><a href="#budget">Бюджет на серверы</a></li>
     <li><a href="#vps"><i style="background:var(--vps)"></i>Наш VPS: где купить и аналоги</a></li>
+    <li><a href="#ops"><i style="background:var(--ops)"></i>Как управлять многими серверами</a></li>
     <li><a href="#pro"><i style="background:var(--pro)"></i>Если клиент как на тарифе Pro у Elirox</a></li>
     <li><a href="#own-tariff"><i style="background:var(--own)"></i>Тариф «1 счёт — 10 роботов»</a></li>
     <li><a href="#five-tariff"><i style="background:var(--five)"></i>Тариф «5 счетов — 5 роботов»</a></li>
@@ -528,6 +549,71 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <p>Цены аналогов — с их сайтов 15.10.2026; где сайт не отдал цену, стоит «не проверено».</p>
 
   <div class="verdict"><div class="lbl">Итого</div><p>Наш сервер — Contabo Cloud VPS 4: 4 ядра, 8 ГБ, около €12,40 в месяц вместе с Windows при договоре на 24 месяца. Новый такой же покупается на contabo.com/en/vps. Среди аналогов с Windows Contabo остаётся самым дешёвым из проверенных; ближайшая замена — OVHcloud. Hetzner без Windows подходит только для Linux-частей сервиса. <span class="tag t-est">вывод, не проверено</span></p><p>Главная новость — Windows у Contabo дорожает с ядрами, поэтому для ферм терминалов выгоднее много маленьких серверов Cloud VPS 4, чем несколько больших. Бюджет в разделе «Бюджет на серверы» посчитан без этого и требует пересчёта. Перед покупкой уточнить у OVHcloud цену Windows и у российских хостингов — нужен ли нам сервер в РФ.</p></div>
+</section>
+
+<section class="opssec" id="ops">
+  <div class="eyebrow">Эксплуатация</div>
+  <h2>Как управлять многими серверами</h2>
+  <p>Вопрос: при 100 клиентах серверов станет много — как ими управлять, следить, куда денется клиент, если на сервере кончилась память, и как их все перезапускать? Ответ: серверами управляет сам сервис, а не человек. Сейчас на тестовом сервере всё в одном процессе, и стенд перезапускается вручную почти каждый день, потому что мы каждый день меняем код. В рабочем сервисе так не будет.</p>
+
+  <h3>Сколько будет серверов</h3>
+  <p>На Cloud VPS 4 помещается около 13 роботов на счетах NPB (замер в часы новостей, см. <a href="#capacity">«Сколько роботов помещается на сервер»</a>). 100 клиентов по одному роботу — это 8 рабочих серверов и один центральный, около €110 в месяц с Windows при договоре на 24 месяца. 1000 клиентов — около 80 серверов. <span class="tag t-est">оценка</span></p>
+
+  <h3>Как устроено: один «мозг» и рабочие серверы</h3>
+  <div class="flow" role="img" aria-label="Схема: клиенты работают с центральным сервером, он управляет рабочими серверами с терминалами MT4, терминалы торгуют у брокера NPB">
+    <div class="node"><b>Клиенты</b><span>Сайт и кабинет Tavio</span></div>
+    <div class="arr" aria-hidden="true"></div>
+    <div class="node main"><b>Центральный сервер — один</b><span>Сайт, база, демо-биржа и терминал цен, диспетчер счетов, панель серверов, уведомления. Код меняется часто — перезапускается только он.</span></div>
+    <div class="arr" aria-hidden="true"></div>
+    <div class="stack">
+      <div class="node"><b>Рабочий сервер 1</b><span>Агент + до ~13 терминалов MT4</span></div>
+      <div class="node"><b>Рабочий сервер 2 … N</b><span>Агент + терминалы. Обновляются редко</span></div>
+    </div>
+    <div class="arr" aria-hidden="true"></div>
+    <div class="node"><b>NPB Markets</b><span>Счета клиентов, ордера</span></div>
+  </div>
+  <ul class="notes">
+    <li><b>Агент</b> — маленькая программа на каждом рабочем сервере, работает как служба Windows. Получает от центра команды «запусти терминал для счёта», «останови», и каждые 10–30 секунд сообщает: память, процессор, диск, живы ли терминалы, идут ли цены.</li>
+    <li><b>Диспетчер</b> в центре решает, на каком сервере работает каждый счёт. Следить за этим вручную не нужно.</li>
+  </ul>
+
+  <h3>Если на сервере кончается память</h3>
+  <ol class="steps">
+    <li><b>Не доводить до этого.</b> Диспетчер ставит новый счёт туда, где больше всего свободно, и не заполняет сервер выше ~70% — запас на часы новостей. <span class="tag t-est">оценка</span></li>
+    <li><b>Переезд счёта.</b> Сервер перегружен — диспетчер останавливает терминал клиента и запускает его на другом сервере. Счёт тот же, ордера у брокера остаются, робот при запуске подхватывает открытые позиции. Для клиента — пауза 1–2 минуты: запуск терминала на стенде занимает 30–120 секунд. <span class="tag t-chk">замер</span></li>
+    <li><b>Сервер упал целиком.</b> Агент не отвечает — диспетчер переносит все его счета на остальные серверы и шлёт уведомление.</li>
+    <li><b>Место кончается везде.</b> Сервис сам заказывает новый сервер через API Contabo из готового образа, где всё уже установлено, — или пока просто пишет в Telegram «нужен сервер». У Contabo есть API для заказа и управления серверами. <span class="tag t-src">источник</span></li>
+  </ol>
+
+  <h3>Почему не придётся перезапускать все серверы</h3>
+  <ul class="notes">
+    <li><b>Обновление одной командой.</b> Скрипт выкладывает новую версию на серверы по очереди, чтобы роботы не встали разом. Или агенты сами забирают новую версию с центрального сервера.</li>
+    <li><b>Перезапуск сайта не трогает терминалы.</b> Поменялся код сайта — перезапускается только центр, роботы на рабочих серверах торгуют дальше.</li>
+    <li><b>Данные обновляются сами:</b> статистика, балансы и отчёты считаются фоновыми задачами, перезапуск для этого не нужен.</li>
+    <li><b>Самовосстановление.</b> Сервис стенда и агент — службы Windows: сами поднимаются после сбоя и перезагрузки. Зависший терминал агент перезапускает сам — замирания мы уже ловим на стенде. Плановая перезагрузка серверов — ночью в выходные, по очереди.</li>
+  </ul>
+
+  <h3>Как следить</h3>
+  <ul class="notes">
+    <li><b>Панель серверов в админке:</b> список серверов, загрузка, сколько счетов на каждом, что упало. Делаем сами, данные от агентов.</li>
+    <li><b>Уведомления в Telegram:</b> сервер не отвечает, память выше 85%, нет цен дольше 5 минут, терминал завис и не поднялся.</li>
+    <li><b>Готовые системы</b>, если понадобится больше: Uptime Kuma (простая проверка «жив или нет»), Zabbix, Grafana с Prometheus — ставятся на центральный сервер.</li>
+  </ul>
+
+  <h3>Что делать и когда</h3>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Этап</th><th>Что делаем</th></tr></thead>
+      <tbody>
+        <tr class="pick"><td><b>Сейчас: переезд на свой VPS</b></td><td>Купить свой сервер и перенести стенд с тестового. Сразу: стенд — служба Windows с автозапуском вместо ручного start.bat; выкладка новой версии одной командой с нашего компьютера; ежедневная копия базы за пределы сервера; уведомления в Telegram «сервер или цены упали»; свой домен вместо sslip.io. В базе — поле «на каком сервере работает терминал счёта», пока везде один сервер.</td></tr>
+        <tr><td><b>Второй сервер</b></td><td>Вынести терминалы в агента; центр отдаёт команды агентам; новый счёт ставится на сервер, где свободнее; панель серверов в админке.</td></tr>
+        <tr><td><b>3+ серверов</b></td><td>Автопереезд счетов при перегрузке и падении сервера; готовый образ сервера; выкладка на все серверы по очереди.</td></tr>
+        <tr><td><b>10+ серверов</b></td><td>Заказ серверов через API Contabo; Zabbix или Grafana.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict"><div class="lbl">Итого</div><p>100 клиентов — это около 8 рабочих серверов и один центральный, и вручную ими никто не управляет: агенты на серверах, диспетчер в центре, переезд счетов и уведомления делают это сами. Перезапускается только центральный сервер, и только при выкладке нового кода. <span class="tag t-est">вывод, не проверено</span></p><p>Начинать стоит с переезда на свой VPS — и сразу сделать его так, как в рабочем сервисе: автозапуск, выкладка одной командой, копии базы, уведомления. Агенты и диспетчер нужны с появлением второго сервера. Если NPB даст Manager API, ферма терминалов не понадобится вовсе — поэтому спросить NPB стоит до того, как строить ферму.</p></div>
 </section>
 
 <section class="pro" id="pro">
