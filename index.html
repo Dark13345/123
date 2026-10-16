@@ -657,27 +657,34 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <p>Уходим с тестового сервера коллеги на свой и сразу настраиваем новый сервер так, как он будет работать в рабочем сервисе (см. <a href="#ops">«Как управлять многими серверами»</a>). Статус пунктов обновляется по мере выполнения.</p>
 
   <div class="todo-prog">
-    <div class="bar" role="progressbar" aria-label="Сделано пунктов" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><i style="width:0%"></i></div>
-    <div class="txt"><span>Сделано <b>0 из 8</b></span><span>В работе <b>1</b></span><span>Ждут вас <b>2</b></span><span>Обновлено 15.10.2026</span></div>
+    <div class="bar" role="progressbar" aria-label="Сделано пунктов" aria-valuemin="0" aria-valuemax="8" aria-valuenow="3"><i style="width:37.5%"></i></div>
+    <div class="txt"><span>Сделано <b>3 из 8</b></span><span>В работе <b>1</b></span><span>Ждут вас <b>1</b></span><span>Обновлено 16.10.2026</span></div>
     <div class="st-legend"><span class="st st-done">сделано</span><span class="st st-work">в работе</span><span class="st st-you">ждёт вас</span><span class="st st-wait">не начато</span></div>
   </div>
 
   <ol class="todo-list">
-    <li class="todo is-you">
-      <span class="ico">1</span>
-      <div class="head"><b>Купить сервер</b><span class="st st-you">ждёт вас</span></div>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Купить сервер</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Куплен 16.10.2026: Contabo Cloud VPS 6, регион EU, сервер работает</p>
       <p>Contabo Cloud VPS 4 с Windows: около €12,40 в месяц при договоре на 24 месяца, около €13,50 помесячно. Прислать в чат только адрес сервера, доступы — не в чат.</p>
       <p><b>Оплата.</b> Contabo принимает карты Visa и Mastercard, PayPal, Skrill, банковский перевод; криптовалюту — нет. При добавлении карты блокируется около €1 для проверки. <span class="tag t-src">источник</span> Российские карты за рубежом не работают, поэтому нужна иностранная карта или PayPal на иностранную карту; есть платёжные посредники, но их надёжность мы не проверяли. <span class="tag t-est">вывод, не проверено</span></p>
     </li>
-    <li class="todo is-wait">
-      <span class="ico">2</span>
-      <div class="head"><b>Перенести стенд</b><span class="st st-wait">не начато</span><span class="who">делаем мы</span></div>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Перенести стенд</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Перенесён 16.10.2026: сайт https://13-140-155-71.sslip.io, 10 роботов работают, пароли счетов перешифрованы без ввода заново</p>
       <p>Код, база, ключи входа через Google и Apple, советник, терминал-шаблон; роботов остановить на старом сервере и запустить на новом. MT4 коллеги и его TrendGuard на тестовом сервере не трогаем.</p>
     </li>
-    <li class="todo is-wait">
+    <li class="todo is-work">
       <span class="ico">3</span>
-      <div class="head"><b>Стенд — служба Windows</b><span class="st st-wait">не начато</span><span class="who">делаем мы</span></div>
+      <div class="head"><b>Стенд — автозапуск</b><span class="st st-work">в работе</span></div>
       <p>Вместо ручного start.bat: стенд сам поднимается после сбоя и перезагрузки сервера.</p>
+      <ul class="sub">
+        <li class="ok">Стенд запускается задачей «Tavio Stand» и сам перезапускается через 5 секунд, если упал</li>
+        <li class="ok">HTTPS (Caddy) запускается вместе с сервером</li>
+        <li>Автовход в Windows после перезагрузки — утилита Autologon на рабочем столе сервера, пароль вводите вы</li>
+      </ul>
     </li>
     <li class="todo is-wait">
       <span class="ico">4</span>
@@ -689,15 +696,15 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
       <div class="head"><b>Ежедневная копия базы</b><span class="st st-wait">не начато</span><span class="who">нужно решение, куда класть</span></div>
       <p>Раз в сутки — копия базы за пределы сервера: ваш компьютер, облако или приватный GitHub.</p>
     </li>
-    <li class="todo is-work">
-      <span class="ico">6</span>
-      <div class="head"><b>Уведомления в Telegram</b><span class="st st-work">в работе</span></div>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Уведомления в Telegram</b><span class="st st-done">сделано</span></div>
       <p>Стенд упал, нет цен дольше 5 минут, терминал завис, память выше 85%.</p>
       <ul class="sub">
         <li class="ok">Бот для уведомлений создан</li>
         <li class="ok">Токен бота сохранён в файле на компьютере (не в чате) — Telegram его принял, бот @uvedmesbot</li>
         <li class="ok">Боту написано /start — тестовое сообщение дошло 15.10</li>
-        <li>Уведомления подключены и проверены</li>
+        <li class="ok">Уведомления подключены и проверены: проверка раз в минуту, тест дошёл 16.10</li>
       </ul>
     </li>
     <li class="todo is-you">
@@ -712,7 +719,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
     </li>
   </ol>
 
-  <div class="verdict"><div class="lbl">Итого</div><p>Первый шаг — купить сервер: для оплаты Contabo нужна иностранная карта или PayPal. Параллельно доделываем уведомления в Telegram: бот уже создан.</p><p>Пункты 3–5 и 8 делаются вместе с переездом и почти не добавляют нагрузки на сервер.</p></div>
+  <div class="verdict"><div class="lbl">Итого</div><p>16.10 стенд переехал на свой сервер: сайт https://13-140-155-71.sslip.io, все 10 роботов работают, уведомления о сбоях приходят в Telegram. Остался автовход в Windows после перезагрузки — его включаете вы.</p><p>Пункты 3–5 и 8 делаются вместе с переездом и почти не добавляют нагрузки на сервер.</p></div>
 </section>
 
 <section class="pro" id="pro">
