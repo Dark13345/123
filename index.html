@@ -1083,8 +1083,8 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <p>Клиент торгует сам, не только роботами: раздел «Торговля» в кабинете Tavio, сделан по видео приложения AMarkets. На Демо-счёте Tavio сделки исполняет демо-биржа стенда по ценам NPB, на счетах NPB — брокер, через терминал счёта на нашем сервере.</p>
 
   <div class="todo-prog">
-    <div class="bar" role="progressbar" aria-label="Сделано пунктов" aria-valuemin="0" aria-valuemax="10" aria-valuenow="5"><i style="width:50%"></i></div>
-    <div class="txt"><span>Сделано <b>5 из 10</b></span><span>Ждут вас <b>1</b></span><span>Обновлено 17.10.2026</span></div>
+    <div class="bar" role="progressbar" aria-label="Сделано пунктов" aria-valuemin="0" aria-valuemax="12" aria-valuenow="7"><i style="width:58%"></i></div>
+    <div class="txt"><span>Сделано <b>7 из 12</b></span><span>Ждут вас <b>1</b></span><span>Обновлено 17.10.2026</span></div>
   </div>
   <ol class="todo-list">
     <li class="todo is-done">
@@ -1122,23 +1122,35 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
       <div class="head"><b>Настоящая сделка на счёте NPB</b><span class="st st-wait">не начато</span><span class="who">делаем мы, после открытия рынка 18–19.10</span></div>
       <p>Открыть и закрыть 0,01 лота на тестовом демо-счёте NPB, проверить стоп-лосс, тейк-профит и отложенный ордер у брокера.</p>
     </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Перезапустить роботов №1–3</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Перезапущены 17.10.2026 при закрытом рынке: открытые позиции и ордера остались у брокера, роботы подхватили их с новым советником</p>
+      <p>Рядом с этими роботами на тех же счетах теперь можно торговать вручную.</p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Криптовалюта, в том числе в выходные</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>В «Торговле» 5 монет NPB — BTCUSD, ETHUSD, LTCUSD, XRPUSD, BCHUSD, отдельная вкладка «Криптовалюта» в выборе инструмента. NPB в выходные монеты не котирует: последний тик по всем пяти — пятница 16.10, 20:54, тогда же, когда закрылся форекс <span class="tag t-chk">замер</span>. Поэтому на Демо-счёте Tavio, если от NPB по монете нет цены 15 минут, стенд берёт цену и свечи с биржи Binance, а спред оставляет брокерский; как только NPB снова прислал цену — монета возвращается на цены NPB. Клиент видит пометку «Цены Binance». Проверено 17.10 (суббота) на сервере: цены всех пяти монет идут, рынок по ним открыт, свечи с пятницы без дыры <span class="tag t-chk">замер</span>. Валюты и золото в выходные по-прежнему закрыты. На счетах NPB монеты торгуются только в будни — сделки исполняет брокер.</p>
+    </li>
     <li class="todo is-you">
-      <span class="ico">7</span>
-      <div class="head"><b>Перезапустить роботов №1–3</b><span class="st st-you">ждёт вас</span><span class="who">нужно решение</span></div>
-      <p>Они запущены со старой версией советника: ручная торговля рядом с ними заработает после перезапуска. Перезапуск — пауза в работе робота на 1–2 минуты.</p>
-    </li>
-    <li class="todo is-wait">
-      <span class="ico">8</span>
-      <div class="head"><b>Больше инструментов</b><span class="st st-wait">не начато</span></div>
-      <p>Сейчас 4 — EURUSD, GBPUSD, USDJPY, XAUUSD: по ним идут цены. Добавить другие валютные пары, металлы и индексы NPB.</p>
-    </li>
-    <li class="todo is-wait">
       <span class="ico">9</span>
+      <div class="head"><b>Перезапустить роботов №1–3 ещё раз — для монет</b><span class="st st-you">ждёт вас</span><span class="who">нужно решение</span></div>
+      <p>Советник с монетами уже на сервере, но роботы №1–3 работают с прошлой версией: на их счетах NPB монеты появятся после перезапуска. Позиции и ордера останутся у брокера, пауза робота — 1–2 минуты. Счета NPB без робота получают монеты сами при следующем открытии «Торговли».</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">10</span>
+      <div class="head"><b>Больше инструментов</b><span class="st st-wait">не начато</span></div>
+      <p>Сейчас 9 — EURUSD, GBPUSD, USDJPY, XAUUSD и 5 монет. У NPB есть ещё другие валютные пары, серебро, нефть, газ, индексы и акции — добавлять так же.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">11</span>
       <div class="head"><b>Уведомления о сработавшем стоп-лоссе и тейк-профите</b><span class="st st-wait">не начато</span></div>
       <p>Письмо или Telegram клиенту, когда ручная сделка закрылась сама.</p>
     </li>
     <li class="todo is-wait">
-      <span class="ico">10</span>
+      <span class="ico">12</span>
       <div class="head"><b>AI-торговые идеи на экране торговли</b><span class="st st-wait">не начато</span><span class="who">отдельная задача</span></div>
       <p>Как блок «Find your next trade with AI» у AMarkets; ведётся в отдельной папке «AI Торговые идеи».</p>
     </li>
@@ -1147,9 +1159,10 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <div class="box"><h3>Нагрузка на сервер</h3>
     <p>Демо-счёт Tavio — почти ноль: проверка стоп-лоссов и ордеров раз в секунду, только по счетам с ручными сделками. Открытый экран торговли раз в секунду получает небольшой ответ с ценами и позициями. <span class="tag t-est">оценка</span></p>
     <p>Счёт NPB без робота — пока открыта «Торговля», работает его терминал: около 71 МБ памяти и часть ядра, как один робот. <span class="tag t-chk">замер</span> Через 30 минут без действий терминал выключается. На счёте с роботом нагрузки не добавляется.</p>
+    <p>Цены монет с Binance — только пока NPB по ним молчит: один небольшой запрос цен в секунду и свечи раз в 15 секунд, памяти около 1 МБ, диск — свечи, как у остальных инструментов. <span class="tag t-est">оценка</span></p>
   </div>
 
-  <div class="verdict"><div class="lbl">Итого</div><p>Ручная торговля работает на Демо-счёте Tavio и на счетах NPB: интерфейс как у приложения AMarkets, сделки по рынку и отложенные, стоп-лосс и тейк-профит, Quick mode. На счетах NPB проверена вся цепочка до брокера, но настоящую сделку — только после открытия рынка. <span class="tag t-est">вывод, не проверено</span></p><p>Дальше — сделка на счёте NPB в рабочие часы рынка, перезапуск роботов №1–3 по вашему решению, больше инструментов.</p></div>
+  <div class="verdict"><div class="lbl">Итого</div><p>Ручная торговля работает на Демо-счёте Tavio и на счетах NPB: интерфейс как у приложения AMarkets, сделки по рынку и отложенные, стоп-лосс и тейк-профит, Quick mode. На счетах NPB проверена вся цепочка до брокера, но настоящую сделку — только после открытия рынка. <span class="tag t-est">вывод, не проверено</span></p><p>Криптовалюта на Демо-счёте Tavio торгуется и в выходные — по ценам Binance, пока NPB закрыт. Дальше — сделка на счёте NPB в рабочие часы рынка, перезапуск роботов №1–3 для монет по вашему решению, больше инструментов.</p></div>
 </section>
 
 <section id="plan">
