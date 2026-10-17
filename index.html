@@ -59,6 +59,9 @@
   --ops: #b42318;
   --ops-soft: #fdecea;
   --ops-line: #f2c1bb;
+  --trade: #2457c5;
+  --trade-soft: #e7eefb;
+  --trade-line: #b8cbef;
   --f-display: "Unbounded", "Golos Text", system-ui, sans-serif;
   --f-body: "Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
@@ -81,6 +84,7 @@
     --mail: #e3c35a; --mail-soft: #2a2410; --mail-line: #56491c;
     --vps: #a9b8cc; --vps-soft: #1a2029; --vps-line: #334055;
     --ops: #f19a8f; --ops-soft: #2d1614; --ops-line: #5c2b26;
+    --trade: #8fb2f5; --trade-soft: #141d33; --trade-line: #2c3f6b;
   }
 }
 :root[data-theme="dark"] {
@@ -99,6 +103,7 @@
   --mail: #e3c35a; --mail-soft: #2a2410; --mail-line: #56491c;
   --vps: #a9b8cc; --vps-soft: #1a2029; --vps-line: #334055;
   --ops: #f19a8f; --ops-soft: #2d1614; --ops-line: #5c2b26;
+  --trade: #8fb2f5; --trade-soft: #141d33; --trade-line: #2c3f6b;
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.55; }
@@ -241,7 +246,8 @@ section[id] { scroll-margin-top: 16px; }
 .todo-prog .txt b { color: var(--ink); }
 .todo-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .todo { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
-.todo .ico { grid-row: span 3; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--line); color: var(--muted); font: 600 13px/1 var(--f-mono); }
+.todo > :not(.ico) { grid-column: 2; }
+.todo .ico { grid-row: 1 / span 2; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--line); color: var(--muted); font: 600 13px/1 var(--f-mono); }
 .todo .ico svg { width: 16px; height: 16px; }
 .todo .head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
 .todo .head b { font-size: 16px; }
@@ -265,6 +271,9 @@ section[id] { scroll-margin-top: 16px; }
 .sub li.ok { color: var(--ink); }
 .sub li.ok::before { background: var(--chk); border-color: var(--chk); box-shadow: inset 0 0 0 2px var(--paper); }
 .st-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.tradesec { background: var(--trade-soft); border: 1px solid var(--trade-line); border-radius: 12px; padding: 24px; --vc: var(--trade); }
+.tradesec h2, .tradesec .eyebrow, .tradesec h3 { color: var(--trade); }
+.tradesec .box, .tradesec .tablebox { border-color: var(--trade-line); }
 .gifts { background: var(--gift-soft); border: 1px solid var(--gift-line); border-radius: 12px; padding: 24px; --vc: var(--gift); }
 .gifts h2, .gifts .eyebrow, .gifts h3 { color: var(--gift); }
 .gifts .box, .gifts .tablebox { border-color: var(--gift-line); }
@@ -331,6 +340,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
     <li><a href="#manager-api"><i style="background:var(--api)"></i>Путь без терминалов: Manager API</a></li>
     <li><a href="#demo-load"><i style="background:var(--load)"></i>Демо-счета Tavio на 1000 пользователей: сколько сервера</a></li>
     <li><a href="#email"><i style="background:var(--mail)"></i>Email-маркетинг: свой отправитель триггерных писем</a></li>
+    <li><a href="#trade"><i style="background:var(--trade)"></i>Ручная торговля: чек-лист</a></li>
     <li><a href="#plan">План улучшений сервиса</a></li>
     <li><a href="#gifts"><i style="background:var(--gift)"></i>Розыгрыши и бонус 500 вместо подарков в «Первых шагах»</a></li>
     <li><a href="#sso">Вход через Google, Apple, Facebook: как подключить</a></li>
@@ -668,8 +678,6 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
       <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <div class="head"><b>Купить сервер</b><span class="st st-done">сделано</span></div>
       <p class="done-at">Куплен 16.10.2026: Contabo Cloud VPS 6, регион EU, сервер работает</p>
-      <p>Contabo Cloud VPS 4 с Windows: около €12,40 в месяц при договоре на 24 месяца, около €13,50 помесячно. Прислать в чат только адрес сервера, доступы — не в чат.</p>
-      <p><b>Оплата.</b> Contabo принимает карты Visa и Mastercard, PayPal, Skrill, банковский перевод; криптовалюту — нет. При добавлении карты блокируется около €1 для проверки. <span class="tag t-src">источник</span> Российские карты за рубежом не работают, поэтому нужна иностранная карта или PayPal на иностранную карту; есть платёжные посредники, но их надёжность мы не проверяли. <span class="tag t-est">вывод, не проверено</span></p>
     </li>
     <li class="todo is-done">
       <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -930,6 +938,95 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <h2>Email-маркетинг: свой отправитель триггерных писем</h2>
   <p>Задача: письма пользователям по их действиям — зарегистрировался, но не запустил робота; стёр бонусный билет, но не зачислил; заканчивается тариф. Собрать это сами можем. Лучше разделить: <b>логику — кому, когда и какое письмо — делаем у себя, а доставку отдаём почтовому сервису через API.</b> Свой почтовый сервер с нуля — самая рискованная часть: письма будут падать в спам. <span class="tag t-est">оценка</span></p>
 
+  <h3>Чек-лист</h3>
+  <div class="todo-prog">
+    <div class="bar" role="progressbar" aria-label="Сделано пунктов" aria-valuemin="0" aria-valuemax="14" aria-valuenow="6"><i style="width:42.9%"></i></div>
+    <div class="txt"><span>Сделано <b>6 из 14</b></span><span>Ждут вас <b>4</b></span><span>Обновлено 17.10.2026</span></div>
+  </div>
+  <ol class="todo-list">
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Логика триггерных писем</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>14 писем: служебные, подсказки по первым шагам, напоминания и итоги недели. Правила раз в 5 минут, журнал без повторов, не больше одного несрочного письма в сутки и не ночью.</p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Отписка и настройки писем</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>Отписка в каждом несрочном письме и в один клик из почтового клиента; «Настройки писем» в кабинете; галочка согласия на рекламу при регистрации, по умолчанию снята.</p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Раздел «Письма» — редактор</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>Письмо собирается из 11 блоков, как у писем NPB; подстановки с проверкой; предпросмотр «телефон / компьютер»; черновик, публикация и история версий; общие блоки; настройки логотипа, цвета и соцсетей; выдача доступа. Сейчас в тестовом режиме — открыт всем, кто вошёл.</p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>«Как выглядят письма»</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>Вкладка как почтовый ящик: все 14 писем во входящих, нажал — письмо открылось целиком.</p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Временные картинки</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>Логотип, баннер, две иконки, телефон с приложением и 6 иконок соцсетей в стиле Tavio. Дизайнер заменит их через кнопку «Загрузить» в редакторе.</p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Образец по письму Cashback</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>«Тариф подключён» и «Тариф закончился» собраны по образцу письма NPB: баннер, текст с обращением, кнопка, карточка-подсказка, «Если у вас остались вопросы», картинка телефона, соцсети, подпись.</p>
+    </li>
+    <li class="todo is-you">
+      <span class="ico">7</span>
+      <div class="head"><b>Свой домен</b><span class="st st-you">ждёт вас</span></div>
+      <p>Без своего домена с записями SPF, DKIM и DMARC письма попадут в спам. Это и пункт 7 чек-листа «Переезд на свой VPS».</p>
+    </li>
+    <li class="todo is-you">
+      <span class="ico">8</span>
+      <div class="head"><b>Аккаунты почтовых сервисов</b><span class="st st-you">ждёт вас</span></div>
+      <p>Unisender Go — для России и СНГ, Amazon SES — для остальных. Пароли SMTP — в файл на сервере, не в чат.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">9</span>
+      <div class="head"><b>Подключить отправку и проверить доставку</b><span class="st st-wait">не начато</span><span class="who">делаем мы, после пунктов 7–8</span></div>
+      <p>Вписать настройки SMTP, отправить тесты на Gmail, Mail.ru и Яндекс, проверить, что письма не в спаме и картинки грузятся.</p>
+    </li>
+    <li class="todo is-you">
+      <span class="ico">10</span>
+      <div class="head"><b>Картинки от дизайнера</b><span class="st st-you">ждёт вас</span><span class="who">дизайнер</span></div>
+      <p>Баннеры и иконки вместо временных.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">11</span>
+      <div class="head"><b>Оформить остальные 12 писем</b><span class="st st-wait">не начато</span><span class="who">в редакторе, без программиста</span></div>
+      <p>Сейчас у них простой вид: логотип, текст, кнопка, подвал.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">12</span>
+      <div class="head"><b>Рекламные рассылки по базе</b><span class="st st-wait">не начато</span><span class="who">делаем мы</span></div>
+      <p>Одно письмо всем, кто дал согласие. Согласие и отписка уже готовы.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">13</span>
+      <div class="head"><b>Имя пользователя для {имя}</b><span class="st st-wait">не начато</span><span class="who">нужно решение</span></div>
+      <p>Сейчас имени нет и {имя} превращается в «Здравствуйте». Можно спрашивать имя при регистрации.</p>
+    </li>
+    <li class="todo is-you">
+      <span class="ico">14</span>
+      <div class="head"><b>Выключить тестовый режим раздела «Письма»</b><span class="st st-you">ждёт вас</span><span class="who">перед настоящими рассылками</span></div>
+      <p>Переключатель во вкладке «Доступ»; дальше править письма смогут только редакторы и администраторы.</p>
+    </li>
+  </ol>
+
+  <div class="box"><h3>Нагрузка на сервер</h3>
+    <p>Проверка, кому пора письмо, — около 5 мс на пользователя, сборка одного письма — около 2 мс; весь стенд с письмами и редактором занимает 42 МБ памяти. Письмо — около 5 КБ, все картинки писем — 374 КБ. <span class="tag t-chk">замер</span></p>
+    <p>На 1000 пользователей проверка займёт около 5 секунд раз в 5 минут — меньше 2% одного ядра, на сервере с 6 ядрами — около 0,3%. Отдельный сервер для писем не нужен: отправляет почтовый сервис. <span class="tag t-est">оценка</span></p>
+  </div>
+
   <h3>Варианты, как отправлять</h3>
   <div class="tablebox">
     <table>
@@ -978,6 +1075,81 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   </ul>
 
   <div class="verdict"><div class="lbl">Итого</div><p>Свой отправитель триггерных писем сделать можем: журнал событий, правила, очередь и отписку пишем на стенде сами, а доставку отдаём почтовому сервису — SES или Unisender Go, смотря где аудитория. Свой почтовый сервер не берём: первые месяцы письма будут уходить в спам. <span class="tag t-est">вывод, не проверено</span></p><p>Начать с 5–6 писем онбординга и служебных. Платформа вроде Listmonk понадобится позже, когда маркетологу нужен будет свой интерфейс для рассылок. До запуска — решить, где аудитория (РФ или нет), выбрать сервис доставки и добавить галочку согласия в регистрацию.</p></div>
+</section>
+
+<section class="tradesec" id="trade">
+  <div class="eyebrow">Новая функция</div>
+  <h2>Ручная торговля: чек-лист</h2>
+  <p>Клиент торгует сам, не только роботами: раздел «Торговля» в кабинете Tavio, сделан по видео приложения AMarkets. На Демо-счёте Tavio сделки исполняет демо-биржа стенда по ценам NPB, на счетах NPB — брокер, через терминал счёта на нашем сервере.</p>
+
+  <div class="todo-prog">
+    <div class="bar" role="progressbar" aria-label="Сделано пунктов" aria-valuemin="0" aria-valuemax="10" aria-valuenow="5"><i style="width:50%"></i></div>
+    <div class="txt"><span>Сделано <b>5 из 10</b></span><span>Ждут вас <b>1</b></span><span>Обновлено 17.10.2026</span></div>
+  </div>
+  <ol class="todo-list">
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Раздел «Торговля» по образцу приложения AMarkets</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>Счёт и баланс, Quick mode — сделка в одно нажатие, периоды 1M / 5M / 15M / 1H, выбор инструмента с поиском, график свечей с линиями позиций, стоп-лосса и тейк-профита, кнопки Sell / Buy со спредом, шторки сделки и карточки позиции, список «Открытые / Отложенные / Закрытые». На телефоне — шторками снизу, на компьютере список сделок справа.</p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Сделки на Демо-счёте Tavio</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>По рынку, Limit и Stop, стоп-лосс и тейк-профит, изменение и закрытие; результат закрытой сделки зачисляется на счёт. Стоп-лосс, тейк-профит и отложенные ордера срабатывают сами, даже когда экран закрыт. Проверено на имитации движения цен.</p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Сделки на счетах NPB через терминал счёта</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>Советник в терминале счёта принимает команды «открыть / изменить / закрыть» и присылает цены брокера, позиции и историю. Проверено 17.10 на демо-счёте NPB 604782: терминал поднялся за 11 секунд, пришли баланс и цены брокера, команда дошла, брокер ответил «Рынок закрыт» — выходные. <span class="tag t-chk">замер</span></p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Терминал только когда нужен</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>На счёте без робота терминал включается при открытии «Торговли» и выключается через 30 минут без действий. Если на счёте запускают робота, терминал ручной торговли уступает ему место.</p>
+    </li>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Роботы и ручные сделки не мешают друг другу</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 17.10.2026</p>
+      <p>У ручных сделок свой номер: робот их не видит и не закрывает, ручная торговля не трогает сделки робота. Сделки, открытые клиентом в своём MT4, тоже видны в «Торговле».</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">6</span>
+      <div class="head"><b>Настоящая сделка на счёте NPB</b><span class="st st-wait">не начато</span><span class="who">делаем мы, после открытия рынка 18–19.10</span></div>
+      <p>Открыть и закрыть 0,01 лота на тестовом демо-счёте NPB, проверить стоп-лосс, тейк-профит и отложенный ордер у брокера.</p>
+    </li>
+    <li class="todo is-you">
+      <span class="ico">7</span>
+      <div class="head"><b>Перезапустить роботов №1–3</b><span class="st st-you">ждёт вас</span><span class="who">нужно решение</span></div>
+      <p>Они запущены со старой версией советника: ручная торговля рядом с ними заработает после перезапуска. Перезапуск — пауза в работе робота на 1–2 минуты.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">8</span>
+      <div class="head"><b>Больше инструментов</b><span class="st st-wait">не начато</span></div>
+      <p>Сейчас 4 — EURUSD, GBPUSD, USDJPY, XAUUSD: по ним идут цены. Добавить другие валютные пары, металлы и индексы NPB.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">9</span>
+      <div class="head"><b>Уведомления о сработавшем стоп-лоссе и тейк-профите</b><span class="st st-wait">не начато</span></div>
+      <p>Письмо или Telegram клиенту, когда ручная сделка закрылась сама.</p>
+    </li>
+    <li class="todo is-wait">
+      <span class="ico">10</span>
+      <div class="head"><b>AI-торговые идеи на экране торговли</b><span class="st st-wait">не начато</span><span class="who">отдельная задача</span></div>
+      <p>Как блок «Find your next trade with AI» у AMarkets; ведётся в отдельной папке «AI Торговые идеи».</p>
+    </li>
+  </ol>
+
+  <div class="box"><h3>Нагрузка на сервер</h3>
+    <p>Демо-счёт Tavio — почти ноль: проверка стоп-лоссов и ордеров раз в секунду, только по счетам с ручными сделками. Открытый экран торговли раз в секунду получает небольшой ответ с ценами и позициями. <span class="tag t-est">оценка</span></p>
+    <p>Счёт NPB без робота — пока открыта «Торговля», работает его терминал: около 71 МБ памяти и часть ядра, как один робот. <span class="tag t-chk">замер</span> Через 30 минут без действий терминал выключается. На счёте с роботом нагрузки не добавляется.</p>
+  </div>
+
+  <div class="verdict"><div class="lbl">Итого</div><p>Ручная торговля работает на Демо-счёте Tavio и на счетах NPB: интерфейс как у приложения AMarkets, сделки по рынку и отложенные, стоп-лосс и тейк-профит, Quick mode. На счетах NPB проверена вся цепочка до брокера, но настоящую сделку — только после открытия рынка. <span class="tag t-est">вывод, не проверено</span></p><p>Дальше — сделка на счёте NPB в рабочие часы рынка, перезапуск роботов №1–3 по вашему решению, больше инструментов.</p></div>
 </section>
 
 <section id="plan">
