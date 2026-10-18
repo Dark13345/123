@@ -339,11 +339,9 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
     <li><a href="#robot">Что ест один наш робот</a></li>
     <li><a href="#capacity">Сколько роботов помещается на сервер</a></li>
     <li><a href="#budget">Бюджет на серверы</a></li>
-    <li><a href="#vps"><i style="background:var(--vps)"></i>Наш VPS: где купить и аналоги</a></li>
     <li><a href="#ops"><i style="background:var(--ops)"></i>Как управлять многими серверами</a></li>
     <li><a href="#move"><i style="background:var(--accent)"></i>Переезд на свой VPS: чек-лист</a></li>
     <li><a href="#pro"><i style="background:var(--pro)"></i>Если клиент как на тарифе Pro у Elirox</a></li>
-    <li><a href="#own-tariff"><i style="background:var(--own)"></i>Тариф «1 счёт — 10 роботов»</a></li>
     <li><a href="#five-tariff"><i style="background:var(--five)"></i>Тариф «5 счетов — 5 роботов»</a></li>
     <li><a href="#check">Что проверить, прежде чем закладывать в бюджет</a></li>
     <li><a href="#manager-api"><i style="background:var(--api)"></i>Путь без терминалов: Manager API</a></li>
@@ -561,52 +559,6 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <div class="verdict"><div class="lbl">Итого</div><p>Если у клиента один робот, серверы на 1000 клиентов обойдутся примерно в €635 в месяц, или около €7 620 в год — €0,63 на клиента в месяц.</p><p>На 100 клиентов — около €73 в месяц, на 500 — около €323. Это меньше доллара на клиента при цене тарифа $20–40.</p></div>
 </section>
 
-<section class="vpssec" id="vps">
-  <div class="eyebrow">Серверы</div>
-  <h2>Наш VPS: где купить и аналоги</h2>
-  <p>До 16.10 стенд работал на тестовом сервере коллеги у <b>Contabo</b> (Германия, компания Contabo GmbH): <span class="mono">vmi2854641.contaboserver.net</span>, IP 158.220.104.158, дата-центр во Франции (Лотербур, у границы с Германией). По размеру это <b>Cloud VPS 4</b>: 4 ядра AMD EPYC, 8 ГБ памяти, Windows 10. <span class="tag t-chk">замер</span> С 16.10 стенд работает на своём сервере: <b>Cloud VPS 6</b> с Windows Server 2025, 6 ядер, 12 ГБ, IP 13.140.155.71, регион EU; в кабинете Contabo счёт — $9,00 за сервер и $20,40 за Windows в месяц. <span class="tag t-chk">замер</span> Купить такой же: <a href="https://contabo.com/en/vps/" target="_blank" rel="noopener">contabo.com/en/vps</a>. Терминалам MT4 нужна Windows, поэтому ниже везде смотрим цену вместе с ней.</p>
-
-  <h3>Тарифы Contabo Cloud VPS</h3>
-  <div class="tablebox">
-    <table>
-      <thead><tr><th>Тариф</th><th class="n">Ядер / ГБ</th><th class="n">Помесячно</th><th class="n">Договор 24 мес.</th><th class="n">Windows</th><th class="n">Итого, 24 мес.</th></tr></thead>
-      <tbody>
-        <tr><td>Cloud VPS 4 — как у нас</td><td class="n">4 / 8</td><td class="n">5,50</td><td class="n">4,40</td><td class="n">8,00</td><td class="n"><b>12,40</b></td></tr>
-        <tr class="pick"><td>Cloud VPS 6</td><td class="n">6 / 12</td><td class="n">7,50</td><td class="n">6,00</td><td class="n">17,00</td><td class="n"><b>23,00</b></td></tr>
-        <tr><td>Cloud VPS 8</td><td class="n">8 / 24</td><td class="n">14,00</td><td class="n">11,20</td><td class="n">28,00</td><td class="n"><b>39,20</b></td></tr>
-        <tr><td>Cloud VPS 12</td><td class="n">12 / 48</td><td class="n">25,00</td><td class="n">20,00</td><td class="n">53,00</td><td class="n"><b>73,00</b></td></tr>
-        <tr><td>Cloud VPS 16</td><td class="n">16 / 64</td><td class="n">37,00</td><td class="n">29,60</td><td class="n">не смотрели</td><td class="n">—</td></tr>
-        <tr><td>Cloud VPS 18</td><td class="n">18 / 96</td><td class="n">49,00</td><td class="n">39,20</td><td class="n">77,00</td><td class="n"><b>116,20</b></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>Цены в евро в месяц с сайта Contabo на 15.10.2026, с налогами. Диск — от 100 ГБ SSD у Cloud VPS 4 до 600 ГБ у Cloud VPS 18. Договор на 12 месяцев — скидка 15%, на 24 — 20%; плата за установку — €0. Windows Server Datacenter докупается отдельно, плата помесячная. <span class="tag t-src">источник</span></p>
-  <ul class="notes">
-    <li><b>Windows дорожает с числом ядер.</b> На 4 ядрах лицензия стоит €8, на 6 — уже €17, на 12 — €53, то есть дороже самого сервера. Раньше в разделе <a href="#capacity">«Сколько роботов помещается на сервер»</a> мы считали Windows от €4,99 и вопрос о росте цены оставляли открытым — теперь ответ есть: растёт. <span class="tag t-src">источник</span></li>
-    <li><b>Расчёт бюджета нужно пересчитать.</b> С Windows дешевле всего на робота выходит не Cloud VPS 6, а Cloud VPS 4: €12,40 за ≈13 роботов — около €0,95 на робота, против €23,00 за ≈20 роботов — €1,15 на робота у Cloud VPS 6. <span class="tag t-est">оценка</span></li>
-    <li>Скидка за длинный договор действует на сам сервер; сказано ли что-то про скидку на Windows, на сайте не указано. <span class="tag t-est">не проверено</span></li>
-  </ul>
-
-  <h3>Аналоги</h3>
-  <div class="tablebox">
-    <table>
-      <thead><tr><th>Хостинг</th><th>Сервер около 4 ядер / 8 ГБ</th><th>Windows</th><th>Где</th><th>Для нас</th></tr></thead>
-      <tbody>
-        <tr><td><b>OVHcloud</b> — <a href="https://www.ovhcloud.com/en/vps/" target="_blank" rel="noopener">ovhcloud.com/en/vps</a></td><td>VPS-2: 4 ядра / 8 ГБ / 75 ГБ NVMe — от $8,50 в месяц <span class="tag t-src">источник</span></td><td>Есть, цену лицензии на странице не нашли <span class="tag t-est">не проверено</span></td><td>Франция и другие страны ЕС, США, Азия</td><td>Ближайшая замена Contabo, крупная европейская компания</td></tr>
-        <tr><td><b>Hetzner</b> — <a href="https://www.hetzner.com/cloud/" target="_blank" rel="noopener">hetzner.com/cloud</a></td><td>Дешёвые облачные серверы, цены на странице не загрузились <span class="tag t-est">не проверено</span></td><td>Готовой Windows в облаке нет — только Linux <span class="tag t-src">источник</span></td><td>Германия, Финляндия, США, Сингапур</td><td>Под терминалы MT4 не подходит; хорош для Linux-частей: сайт, демо-биржа, почта</td></tr>
-        <tr><td><b>Aeza</b> — <a href="https://aeza.net/virtual-servers" target="_blank" rel="noopener">aeza.net</a></td><td>WAWs-3: 4 ядра / 8 ГБ / 120 ГБ NVMe — €23,73 в месяц <span class="tag t-src">источник</span></td><td>Образ есть, лицензия не входит <span class="tag t-src">источник</span></td><td>Москва, Петербург, Франкфурт, Париж, Амстердам, Варшава и др.</td><td>Дороже Contabo вдвое; оплату из России на странице не проверили</td></tr>
-        <tr><td><b>Timeweb Cloud</b> — <a href="https://timeweb.cloud/services/vds-vps" target="_blank" rel="noopener">timeweb.cloud</a></td><td>2 ядра / 4 ГБ — 5 480 ₽ в месяц; конфигурации крупнее на странице не показаны <span class="tag t-src">источник</span></td><td>Есть, цену лицензии не нашли <span class="tag t-est">не проверено</span></td><td>Москва, Петербург, Новосибирск, Франкфурт, Амстердам, Алматы</td><td>Если сервис для россиян — данные можно хранить в РФ (см. раздел про закон о персональных данных); заметно дороже</td></tr>
-        <tr><td><b>Selectel</b> — <a href="https://selectel.ru/prices/" target="_blank" rel="noopener">selectel.ru</a></td><td>Цены на странице не загрузились <span class="tag t-est">не проверено</span></td><td>Есть, цену лицензии не нашли <span class="tag t-est">не проверено</span></td><td>Москва, Петербург</td><td>То же, что Timeweb: вариант для российских пользователей</td></tr>
-        <tr><td><b>Vultr</b>, <b>AWS Lightsail</b>, <b>Azure</b></td><td>Цены не сверяли: сайт Vultr не открылся <span class="tag t-est">не проверено</span></td><td>Есть, лицензия обычно дорогая <span class="tag t-est">оценка</span></td><td>По всему миру</td><td>Дороже Contabo в разы <span class="tag t-est">оценка</span></td></tr>
-        <tr><td><b>Forex-VPS</b>: ForexVPS.net, Beeks</td><td>Цены не сверяли <span class="tag t-est">не проверено</span></td><td>Windows уже в цене <span class="tag t-est">оценка</span></td><td>Рядом с серверами брокеров (Лондон, Нью-Йорк)</td><td>Сделаны под MT4, малая задержка до брокера; дороже за ядро <span class="tag t-est">оценка</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>Цены аналогов — с их сайтов 15.10.2026; где сайт не отдал цену, стоит «не проверено».</p>
-
-  <div class="verdict"><div class="lbl">Итого</div><p>Наш сервер — Contabo Cloud VPS 4: 4 ядра, 8 ГБ, около €12,40 в месяц вместе с Windows при договоре на 24 месяца. Новый такой же покупается на contabo.com/en/vps. Среди аналогов с Windows Contabo остаётся самым дешёвым из проверенных; ближайшая замена — OVHcloud. Hetzner без Windows подходит только для Linux-частей сервиса. <span class="tag t-est">вывод, не проверено</span></p><p>Главная новость — Windows у Contabo дорожает с ядрами, поэтому для ферм терминалов выгоднее много маленьких серверов Cloud VPS 4, чем несколько больших. Бюджет в разделе «Бюджет на серверы» посчитан без этого и требует пересчёта. Перед покупкой уточнить у OVHcloud цену Windows и у российских хостингов — нужен ли нам сервер в РФ.</p></div>
-</section>
-
 <section class="opssec" id="ops">
   <div class="eyebrow">Эксплуатация</div>
   <h2>Как управлять многими серверами</h2>
@@ -769,35 +721,6 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <p>Рабочие серверы — Cloud VPS 6, плюс центральный ≈ €10,49. Доля серверов в цене Pro: около 9% при 25 роботах и 7% при 10 (если 1 € ≈ 1,15 $). <span class="tag t-est">оценка</span></p>
   <ul class="notes"><li>Сколько роботов реально включают клиенты Pro, мы не знаем, поэтому два крайних случая.</li><li>Сейчас стенд позволяет один робот на счёт: для Pro нужно научить его запускать несколько роботов в одном терминале.</li><li>3% на дополнительного робота — оценка по тому, что робот добавляет к терминалу 2–4%; отдельно не мерили.</li></ul>
   <div class="verdict"><div class="lbl">Вывод</div><p>Клиент с возможностями Pro обойдётся в €6,24–7,81 серверов в месяц: дороже всего не роботы, а 10 отдельных терминалов. Это около 7–9% цены Pro у Elirox.</p><p>Один такой клиент занимает почти целый сервер на 6 ядер. На масштабе Pro без Manager API брокера или нескольких счетов в одном терминале не обойтись.</p></div>
-</section>
-
-<section class="own" id="own-tariff">
-  <div class="eyebrow">Наш возможный тариф</div>
-  <h2>Тариф «1 счёт — 10 роботов»</h2>
-  <p>Пример тарифа: клиент подключает один брокерский счёт NPB и запускает на нём до 10 роботов, например на разных инструментах. Для сравнения: у Elirox Basic — 2 счёта и 2 робота за $19,99, Advanced — 5 и 5 за $39,99. <span class="tag t-src">источник</span></p>
-  <p>Счёт один — значит, и терминал один: 18% ядра. Остальные 9 роботов работают в нём же на других графиках, по 3% каждый. Это самый экономный тариф: дорогой терминал MT4 делят все 10 роботов. <span class="tag t-est">оценка</span></p>
-  <div class="kpis"><div class="kpi"><div class="v">≈ €1,56</div><div class="k">серверы в месяц на клиента — все 10 роботов</div></div><div class="kpi"><div class="v">≈ €0,83</div><div class="k">серверы в месяц на клиента — в среднем 3 робота</div></div><div class="kpi"><div class="v">45% · 24%</div><div class="k">процессора одного ядра на клиента — все 10 роботов / в среднем 3 робота</div></div></div>
-  <div class="capacity">
-    <div class="lbl">Сколько клиентов на один VPS</div>
-    <p><b>все 10 роботов:</b> тестовый сервер — 5 клиентов, сервер на 6 ядер — 8 клиентов<br><b>в среднем 3 робота:</b> тестовый сервер — 10 клиентов, сервер на 6 ядер — 15 клиентов.</p>
-    <ul><li>Активный рынок, 18% ядра на терминал, 3% на каждого следующего робота в том же терминале, запас 40%. Тестовый сервер — 4 ядра, ≈ €10,49; сервер на 6 ядер — ≈ €12,49. <span class="tag t-est">оценка</span></li></ul>
-  </div>
-  <div class="tablebox">
-    <table>
-      <thead><tr><th>Клиентов</th><th class="n">Рабочих серверов</th><th class="n">€ в месяц</th><th class="n">€ на клиента</th></tr></thead>
-      <tbody>
-        <tr><td>100, все 10 роботов</td><td class="n">13</td><td class="n">172,86</td><td class="n">1,73</td></tr>
-        <tr><td>100, в среднем 3 робота</td><td class="n">7</td><td class="n">97,92</td><td class="n">0,98</td></tr>
-        <tr><td>500, все 10 роботов</td><td class="n">63</td><td class="n">797,36</td><td class="n">1,59</td></tr>
-        <tr><td>500, в среднем 3 робота</td><td class="n">34</td><td class="n">435,15</td><td class="n">0,87</td></tr>
-        <tr class="pick"><td>1000, все 10 роботов</td><td class="n">125</td><td class="n">1 571,74</td><td class="n">1,57</td></tr>
-        <tr><td>1000, в среднем 3 робота</td><td class="n">67</td><td class="n">847,32</td><td class="n">0,85</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>Рабочие серверы — Cloud VPS 6, плюс центральный ≈ €10,49. При цене как у Elirox Basic ($19,99) на серверы уйдёт около 5–9% выручки (если 1 € ≈ 1,15 $). <span class="tag t-est">оценка</span></p>
-  <ul class="notes"><li>Риск для депозита: 10 сеток по 5 уровней на одном счёте — до 50 позиций одновременно. Нужна проверка маржи перед запуском каждого следующего робота.</li><li>3% на дополнительного робота в том же терминале — оценка, отдельно не мерили.</li></ul>
-  <div class="verdict"><div class="lbl">Вывод</div><p>При тарифе «1 счёт — 10 роботов» клиент обходится в €0,83–1,56 серверов в месяц. Из всех вариантов это самый выгодный по серверам: 10 роботов делят один терминал.</p><p>Чтобы тариф заработал, стенд нужно научить запускать несколько роботов в одном терминале — сейчас на счёте может работать только один.</p></div>
 </section>
 
 <section class="five" id="five-tariff">
