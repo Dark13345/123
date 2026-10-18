@@ -62,6 +62,9 @@
   --trade: #2457c5;
   --trade-soft: #e7eefb;
   --trade-line: #b8cbef;
+  --srv: #6b3fb8;
+  --srv-soft: #f1ebfb;
+  --srv-line: #d3c3ef;
   --f-display: "Unbounded", "Golos Text", system-ui, sans-serif;
   --f-body: "Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
@@ -85,6 +88,7 @@
     --vps: #a9b8cc; --vps-soft: #1a2029; --vps-line: #334055;
     --ops: #f19a8f; --ops-soft: #2d1614; --ops-line: #5c2b26;
     --trade: #8fb2f5; --trade-soft: #141d33; --trade-line: #2c3f6b;
+    --srv: #c3a5f5; --srv-soft: #1e1730; --srv-line: #43336a;
   }
 }
 :root[data-theme="dark"] {
@@ -104,6 +108,7 @@
   --vps: #a9b8cc; --vps-soft: #1a2029; --vps-line: #334055;
   --ops: #f19a8f; --ops-soft: #2d1614; --ops-line: #5c2b26;
   --trade: #8fb2f5; --trade-soft: #141d33; --trade-line: #2c3f6b;
+  --srv: #c3a5f5; --srv-soft: #1e1730; --srv-line: #43336a;
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.55; }
@@ -271,6 +276,10 @@ section[id] { scroll-margin-top: 16px; }
 .sub li.ok { color: var(--ink); }
 .sub li.ok::before { background: var(--chk); border-color: var(--chk); box-shadow: inset 0 0 0 2px var(--paper); }
 .st-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.srvload { background: var(--srv-soft); border: 1px solid var(--srv-line); border-radius: 12px; padding: 24px; --vc: var(--srv); }
+.srvload h2, .srvload .eyebrow, .srvload h3 { color: var(--srv); }
+.srvload .box, .srvload .tablebox { border-color: var(--srv-line); }
+.srvload tr.top td { font-weight: 600; }
 .tradesec { background: var(--trade-soft); border: 1px solid var(--trade-line); border-radius: 12px; padding: 24px; --vc: var(--trade); }
 .tradesec h2, .tradesec .eyebrow, .tradesec h3 { color: var(--trade); }
 .tradesec .box, .tradesec .tablebox { border-color: var(--trade-line); }
@@ -341,6 +350,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
     <li><a href="#demo-load"><i style="background:var(--load)"></i>Демо-счета Tavio на 1000 пользователей: сколько сервера</a></li>
     <li><a href="#email"><i style="background:var(--mail)"></i>Email-маркетинг: свой отправитель триггерных писем</a></li>
     <li><a href="#trade"><i style="background:var(--trade)"></i>Ручная торговля: чек-лист</a></li>
+    <li><a href="#srvload"><i style="background:var(--srv)"></i>Что сейчас нагружает сервер</a></li>
     <li><a href="#plan">План улучшений сервиса</a></li>
     <li><a href="#gifts"><i style="background:var(--gift)"></i>Розыгрыши и бонус 500 вместо подарков в «Первых шагах»</a></li>
     <li><a href="#sso">Вход через Google, Apple, Facebook: как подключить</a></li>
@@ -1090,8 +1100,8 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
   <p>Клиент торгует сам, не только роботами: раздел «Торговля» в кабинете Tavio, сделан по видео приложения AMarkets. На Демо-счёте Tavio сделки исполняет демо-биржа стенда по ценам NPB, на счетах NPB — брокер, через терминал счёта на нашем сервере.</p>
 
   <div class="todo-prog">
-    <div class="bar" role="progressbar" aria-label="Сделано пунктов" aria-valuemin="0" aria-valuemax="12" aria-valuenow="7"><i style="width:58%"></i></div>
-    <div class="txt"><span>Сделано <b>7 из 12</b></span><span>Ждут вас <b>1</b></span><span>Обновлено 17.10.2026</span></div>
+    <div class="bar" role="progressbar" aria-label="Сделано пунктов" aria-valuemin="0" aria-valuemax="12" aria-valuenow="9"><i style="width:75%"></i></div>
+    <div class="txt"><span>Сделано <b>9 из 12</b></span><span>Ждут вас <b>0</b></span><span>Обновлено 18.10.2026</span></div>
   </div>
   <ol class="todo-list">
     <li class="todo is-done">
@@ -1141,15 +1151,17 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
       <p class="done-at">Сделано 17.10.2026</p>
       <p>В «Торговле» 5 монет NPB — BTCUSD, ETHUSD, LTCUSD, XRPUSD, BCHUSD, отдельная вкладка «Криптовалюта» в выборе инструмента. NPB в выходные монеты не котирует: последний тик по всем пяти — пятница 16.10, 20:54, тогда же, когда закрылся форекс <span class="tag t-chk">замер</span>. Поэтому на Демо-счёте Tavio, если от NPB по монете нет цены 15 минут, стенд берёт цену и свечи с биржи Binance, а спред оставляет брокерский; как только NPB снова прислал цену — монета возвращается на цены NPB. Клиент видит пометку «Цены Binance». Проверено 17.10 (суббота) на сервере: цены всех пяти монет идут, рынок по ним открыт, свечи с пятницы без дыры <span class="tag t-chk">замер</span>. Валюты и золото в выходные по-прежнему закрыты. На счетах NPB монеты торгуются только в будни — сделки исполняет брокер.</p>
     </li>
-    <li class="todo is-you">
-      <span class="ico">9</span>
-      <div class="head"><b>Перезапустить роботов №1–3 ещё раз — для монет</b><span class="st st-you">ждёт вас</span><span class="who">нужно решение</span></div>
-      <p>Советник с монетами уже на сервере, но роботы №1–3 работают с прошлой версией: на их счетах NPB монеты появятся после перезапуска. Позиции и ордера останутся у брокера, пауза робота — 1–2 минуты. Счета NPB без робота получают монеты сами при следующем открытии «Торговли».</p>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Перезапустить роботов №1–3: новые инструменты и облегчённый советник</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Перезапущены 18.10.2026 в 10:37 по времени сервера, при закрытом рынке: поднялись за 30 секунд, позиции и ордера остались у брокера (4/10, 4/10, 3/10)</p>
+      <p>На их счетах NPB в «Торговле» теперь все 29 инструментов <span class="tag t-chk">замер</span>. Терминал каждого робота тратит 1–2% ядра вместо 54% <span class="tag t-chk">замер</span> — см. блок «Что сейчас нагружает сервер».</p>
     </li>
-    <li class="todo is-wait">
-      <span class="ico">10</span>
-      <div class="head"><b>Больше инструментов</b><span class="st st-wait">не начато</span></div>
-      <p>Сейчас 9 — EURUSD, GBPUSD, USDJPY, XAUUSD и 5 монет. У NPB есть ещё другие валютные пары, серебро, нефть, газ, индексы и акции — добавлять так же.</p>
+    <li class="todo is-done">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="head"><b>Больше инструментов: 29 вместо 9</b><span class="st st-done">сделано</span></div>
+      <p class="done-at">Сделано 18.10.2026</p>
+      <p>Добавлены 20 ходовых инструментов NPB: валюты AUDUSD, USDCAD, USDCHF, NZDUSD, EURJPY, GBPJPY, EURGBP; серебро XAGUSD; нефть Brent и WTI, газ; индексы S&amp;P 500, Nasdaq 100, Dow Jones 30, DAX; акции Apple, Tesla, Nvidia, Amazon, Microsoft. В выборе инструмента — вкладки Forex, Металлы, Сырьё, Индексы, Акции, Криптовалюта. Набор взят как общепринятый «самые ходовые», статистики NPB по популярности у нас нет. Цены по всем 29 приходят от NPB <span class="tag t-chk">замер</span>; залог посчитан верно и для кроссов (EURJPY 0,1 лота — $112) <span class="tag t-chk">замер</span>. Индексы и акции торгуются только в часы бирж. Всего у NPB 124 инструмента — остальные добавляются так же.</p>
     </li>
     <li class="todo is-wait">
       <span class="ico">11</span>
@@ -1167,9 +1179,48 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
     <p>Демо-счёт Tavio — почти ноль: проверка стоп-лоссов и ордеров раз в секунду, только по счетам с ручными сделками. Открытый экран торговли раз в секунду получает небольшой ответ с ценами и позициями. <span class="tag t-est">оценка</span></p>
     <p>Счёт NPB без робота — пока открыта «Торговля», работает его терминал: около 71 МБ памяти и часть ядра, как один робот. <span class="tag t-chk">замер</span> Через 30 минут без действий терминал выключается. На счёте с роботом нагрузки не добавляется.</p>
     <p>Цены монет с Binance — только пока NPB по ним молчит: один небольшой запрос цен в секунду и свечи раз в 15 секунд, памяти около 1 МБ, диск — свечи, как у остальных инструментов. <span class="tag t-est">оценка</span></p>
+    <p><b>Чем больше инструментов, тем больше нагрузка.</b> Каждый инструмент — это цена в общем файле цен, минутные свечи и история графика на диске. При 29 инструментах: файл цен 7,9 КБ переписывается дважды в секунду, свечи — отдельный файл 80 КБ раз в 5 секунд <span class="tag t-chk">замер</span>. Раньше свечи лежали в том же файле, что и цены, и переписывались дважды в секунду: при 29 инструментах это было бы ~0,2 МБ/с записи на диск, поэтому файл разделили <span class="tag t-est">оценка</span>. Терминал цен с 29 инструментами — 2,6% одного ядра и 66–119 МБ памяти <span class="tag t-chk">замер</span>. История графиков — около 0,1 МБ на инструмент в день: при 29 инструментах ~3 МБ/день, ~1 ГБ в год <span class="tag t-est">оценка</span>; свободно 174 ГБ.</p>
   </div>
 
-  <div class="verdict"><div class="lbl">Итого</div><p>Ручная торговля работает на Демо-счёте Tavio и на счетах NPB: интерфейс как у приложения AMarkets, сделки по рынку и отложенные, стоп-лосс и тейк-профит, Quick mode. На счетах NPB проверена вся цепочка до брокера, но настоящую сделку — только после открытия рынка. <span class="tag t-est">вывод, не проверено</span></p><p>Криптовалюта на Демо-счёте Tavio торгуется и в выходные — по ценам Binance, пока NPB закрыт. Дальше — сделка на счёте NPB в рабочие часы рынка, перезапуск роботов №1–3 для монет по вашему решению, больше инструментов.</p></div>
+  <div class="verdict"><div class="lbl">Итого</div><p>Ручная торговля работает на Демо-счёте Tavio и на счетах NPB: интерфейс как у приложения AMarkets, сделки по рынку и отложенные, стоп-лосс и тейк-профит, Quick mode. На счетах NPB проверена вся цепочка до брокера, но настоящую сделку — только после открытия рынка. <span class="tag t-est">вывод, не проверено</span></p><p>Криптовалюта на Демо-счёте Tavio торгуется и в выходные — по ценам Binance, пока NPB закрыт. Инструментов теперь 29.</p><p><b>Нагрузка растёт вместе с числом инструментов</b>, но медленно: 20 новых инструментов добавили серверу проценты, а не десятки процентов, потому что цены и свечи разнесены по разным файлам. Добавлять все 124 можно, но тогда стоит снова сделать замер. Роботы №1–3 перезапущены с облегчённым советником. Дальше — сделка на счёте NPB в рабочие часы рынка.</p></div>
+</section>
+
+<section class="srvload" id="srvload">
+  <div class="eyebrow">Замеры 18.10.2026, воскресенье, рынок закрыт: до и после облегчения советника</div>
+  <h2>Что сейчас нагружает сервер</h2>
+  <p>Сервер Contabo Cloud VPS 6: 6 ядер, 12 ГБ памяти, диск 200 ГБ. Работают 3 робота на счетах NPB (№1–3), 8 роботов на демо-бирже Tavio, терминал цен, стенд и сайт. Процессор и память по каждой группе — среднее за 20–30 секунд.</p>
+
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Что работает</th><th class="n">Процессор: до</th><th class="n">Процессор: после</th><th class="n">Память сейчас</th><th>Откуда знаем</th></tr></thead>
+      <tbody>
+        <tr class="top"><td>3 терминала MT4 роботов №1–3 (счета NPB)</td><td class="n">27% — по 54% ядра каждый</td><td class="n">0,7% — по 1–2% ядра</td><td class="n">275 МБ на три</td><td><span class="tag t-chk">замер</span></td></tr>
+        <tr><td>Windows и системные службы (114 процессов)</td><td class="n">6%</td><td class="n">3%</td><td class="n">2,8 ГБ</td><td><span class="tag t-chk">замер</span></td></tr>
+        <tr><td>Терминал цен (29 инструментов, для Демо-счёта Tavio и графиков)</td><td class="n">0,4%</td><td class="n">0,4%</td><td class="n">20–120 МБ</td><td><span class="tag t-chk">замер</span></td></tr>
+        <tr><td>Стенд Tavio (сайт, 8 демо-роботов, письма, цены Binance)</td><td class="n">0,6%</td><td class="n">0,7%</td><td class="n">77 МБ</td><td><span class="tag t-chk">замер</span></td></tr>
+        <tr><td>Caddy (адрес сайта и https)</td><td class="n">~0%</td><td class="n">~0%</td><td class="n">41 МБ</td><td><span class="tag t-chk">замер</span></td></tr>
+        <tr><td><b>Весь сервер</b></td><td class="n"><b>37,5%</b></td><td class="n"><b>9,7%</b></td><td class="n"><b>2,7 из 12 ГБ</b></td><td><span class="tag t-chk">замер</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>«До» — 18.10 около 10:30, «после» — 18.10 в 10:40, через 2 минуты после перезапуска роботов №1–3; время сервера. «Весь сервер» — по счётчику Windows, в нём есть и сам замер. Диск: свободно 174 из 200 ГБ, запись в среднем 400–480 КБ/с; данные стенда (база, история графиков) — 7,5 МБ, копии терминалов MT4 — 327 МБ. <span class="tag t-chk">замер</span></p>
+
+  <div class="box"><h3>Главное: три терминала роботов</h3>
+    <p>До облегчения три терминала роботов №1–3 занимали почти 3/4 всей нагрузки — по 54% ядра каждый, и это при закрытом рынке. <span class="tag t-chk">замер</span> Раньше терминал с роботом тратил 11–19% ядра на открытом рынке (замер 08.10). Разница появилась 17.10 в 18:41, когда роботы №1–3 перезапустили с советником ручной торговли: раз в секунду он заново подписывался на инструменты и перебирал всю историю сделок счёта, а у сеточных роботов она большая. Терминал цен на том же MT4 тратит всего 2,6% ядра. <span class="tag t-est">вывод, не проверено</span></p>
+    <p><b>Что сделано 18.10:</b> советник облегчён — подписка на инструменты раз в 5 минут, история сделок пересобирается только когда она изменилась, отчёт раз в секунду только пока клиент держит открытой «Торговлю» этого счёта, иначе раз в 10 секунд. Роботы №1–3 перезапущены с ним в 10:37: терминал робота теперь тратит 1–2% ядра вместо 54% <span class="tag t-chk">замер</span>. Это замер при закрытом рынке; в будни терминал добавит ещё 11–19% ядра на обработку цен — так было до ручной торговли (замер 08.10) <span class="tag t-est">оценка</span>.</p>
+  </div>
+
+  <div class="box"><h3>Что будет расти с клиентами</h3>
+    <ul>
+      <li><b>Каждый счёт NPB с роботом</b> — свой терминал MT4: 11–19% одного ядра на открытом рынке и 63–120 МБ памяти (замер 08.10). Это главная статья нагрузки. <span class="tag t-chk">замер</span></li>
+      <li><b>Счёт NPB без робота, у которого открыта «Торговля»</b> — тот же терминал, но только пока экран открыт и ещё 30 минут после.</li>
+      <li><b>Роботы на Демо-счёте Tavio</b> — почти ноль: их ведёт стенд по общим ценам, без терминала. <span class="tag t-est">оценка</span></li>
+      <li><b>Инструменты</b> — несколько процентов ядра на весь набор, а не на клиента; рост — только место на диске под историю графиков. <span class="tag t-est">оценка</span></li>
+      <li><b>Письма и рассылки</b> — проверка раз в 5 минут и ~5 писем в секунду во время рассылки; почти ноль. <span class="tag t-est">оценка</span></li>
+    </ul>
+  </div>
+
+  <div class="verdict"><div class="lbl">Итого</div><p>Было 37,5% процессора — почти всё ели три терминала роботов на счетах NPB из-за ежесекундного отчёта ручной торговли. После облегчения советника и перезапуска роботов — 9,7%, а сами терминалы — 0,7% вместо 27%. <span class="tag t-chk">замер</span> Памяти занято 2,7 из 12 ГБ. В будни, при открытом рынке, ожидаем около 15–20% процессора. <span class="tag t-est">оценка</span></p><p>Число инструментов на нагрузку влияет слабо. Главное, что растёт с клиентами, — терминалы MT4 под счета NPB: на этом сервере их поместится примерно 20–25 (по модели 18% ядра на терминал с запасом 40%). <span class="tag t-est">оценка</span></p></div>
 </section>
 
 <section id="plan">
