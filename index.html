@@ -1275,6 +1275,52 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-t
     <p>Подробно — в разделе <a href="#manager-api">«Путь без терминалов»</a>, там же список вопросов к NPB.</p>
     <p class="concl"><b>Вывод.</b> Причина найдена. На ближайшее время хватит нескольких дешёвых адресов. Для 1000 клиентов нужна договорённость с NPB: проще всего — поднять лимит до 20–30 счетов на IP, тогда хватит одного адреса на сервер; дешевле всего в работе — Manager API.</p>
   </div>
+  <div class="box"><h3>Схема: как сейчас устроена связь с NPB</h3>
+    <div class="diagram">
+      <svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: клиенты работают со стендом Tavio, стенд через файлы управляет терминалами MT4 — по одному на каждый счёт NPB, все терминалы выходят к брокеру NPB через один IP нашего сервера">
+        <defs><marker id="npbA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="arrh"/></marker></defs>
+      <rect x="20" y="10" width="600" height="46" rx="8" style="fill:var(--paper);stroke:var(--line);stroke-width:1.5"/>
+      <text x="36" y="31">Клиенты Tavio</text><text x="36" y="48" class="mut">кабинет, роботы, «Торговля» — в браузере</text>
+      <line x1="320" y1="58" x2="320" y2="98" class="arr" marker-start="url(#npbA)" marker-end="url(#npbA)"/>
+      <text x="332" y="82" class="mut">HTTPS и WebSocket</text>
+      <rect x="10" y="100" width="620" height="252" rx="10" style="fill:none;stroke:var(--muted);stroke-width:1;stroke-dasharray:6 5"/>
+      <text x="24" y="118" class="mut">Наш сервер Contabo, Windows</text>
+      <rect x="40" y="126" width="560" height="40" rx="8" style="fill:var(--paper);stroke:var(--line);stroke-width:1.5"/>
+      <text x="56" y="151">Стенд Tavio (Python): сайт, демо-биржа, сторож</text>
+      <line x1="320" y1="168" x2="320" y2="196" class="arr" marker-start="url(#npbA)" marker-end="url(#npbA)"/>
+      <text x="332" y="187" class="mut">файлы: отчёты советников и команды</text>
+      <rect x="40" y="200" width="128" height="66" rx="8" style="fill:var(--paper);stroke:var(--accent);stroke-width:1.5"/>
+      <text x="52" y="222">MT4 · робот №1</text><text x="52" y="240" class="mut">счёт 603205</text><text x="52" y="256" class="mut">советник-сетка</text>
+      <line x1="104" y1="268" x2="320" y2="304" class="arr"/>
+      <rect x="182" y="200" width="128" height="66" rx="8" style="fill:var(--paper);stroke:var(--accent);stroke-width:1.5"/>
+      <text x="194" y="222">MT4 «Торговля»</text><text x="194" y="240" class="mut">счёт 605690</text><text x="194" y="256" class="mut">ручные сделки</text>
+      <line x1="246" y1="268" x2="320" y2="304" class="arr"/>
+      <rect x="324" y="200" width="128" height="66" rx="8" style="fill:var(--paper);stroke:var(--accent);stroke-width:1.5"/>
+      <text x="336" y="222">MT4 · цены</text><text x="336" y="240" class="mut">счёт 606627</text><text x="336" y="256" class="mut">для демо-биржи</text>
+      <line x1="388" y1="268" x2="320" y2="304" class="arr"/>
+      <rect x="466" y="200" width="128" height="66" rx="8" style="fill:var(--paper);stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 4"/>
+      <text x="478" y="222">MT4 · ещё</text><text x="478" y="240" class="mut">по 1 на счёт</text><text x="478" y="256" class="mut">каждого клиента</text>
+      <line x1="530" y1="268" x2="320" y2="304" class="arr"/>
+      <rect x="200" y="306" width="240" height="38" rx="8" style="fill:var(--paper);stroke:var(--sell);stroke-width:2.5"/>
+      <text x="216" y="330" style="fill:var(--sell)">один IP: 13.140.155.71</text>
+      <line x1="320" y1="346" x2="320" y2="398" class="arr" marker-end="url(#npbA)"/>
+      <text x="332" y="370" style="fill:var(--sell)">узкое место: каждый терминал —</text>
+      <text x="332" y="386" style="fill:var(--sell)">отдельное подключение к брокеру</text>
+      <rect x="20" y="400" width="600" height="60" rx="8" style="fill:var(--paper);stroke:var(--line);stroke-width:1.5"/>
+      <text x="36" y="422">Брокер NPB, сервер MetaTrader 4</text>
+      <text x="36" y="440" class="mut">точки доступа 37.48.90.145 и 5.79.100.53</text>
+      <text x="36" y="454" class="mut">демо NMarkets-Demo, реальные NMarkets-Real</text>
+      </svg>
+    </div>
+    <ul>
+      <li><b>Один счёт NPB — один терминал MT4 на нашем сервере.</b> Терминал входит в счёт по паролю клиента, как обычная программа MetaTrader у трейдера дома. У NPB нет для нас отдельного входа — мы для брокера просто много обычных клиентов. <span class="tag t-chk">замер</span></li>
+      <li><b>Робот — это советник внутри терминала.</b> Он сам ставит и снимает ордера у брокера, а стенду раз в секунду пишет отчёт в файл: баланс, ордера, «я жив». Команды от стенда — тоже файлами. <span class="tag t-chk">замер</span></li>
+      <li><b>«Торговля» на счёте NPB</b> — тоже свой терминал: клиент жмёт кнопку в браузере, стенд передаёт команду терминалу, тот отправляет сделку брокеру. <span class="tag t-chk">замер</span></li>
+      <li><b>Терминал цен</b> на служебном демо-счёте берёт котировки NPB для демо-биржи — счетам демо-биржи свои терминалы не нужны. <span class="tag t-chk">замер</span></li>
+      <li><b>Все терминалы выходят к брокеру с одного адреса.</b> При 3 терминалах замираний нет, при 5–7 — десятки за вечер (проверка 28.10). Чем больше клиентов со счётом NPB, тем больше подключений с этого адреса. <span class="tag t-chk">замер</span></li>
+    </ul>
+    <p class="concl"><b>Вывод.</b> Сейчас мы подключаемся к NPB так же, как обычный трейдер, только много раз с одного адреса. Отсюда и ограничение: либо больше адресов, либо NPB поднимает лимит, либо Manager API — одно подключение вместо терминала на каждый счёт.</p>
+  </div>
   <div class="box"><h3>Неделя 21–28.10 в цифрах: что видит клиент в «Торговле»</h3>
     <p>Плашка «Подключаем терминал счёта NPB — это до 2 минут» появляется в двух разных случаях, и у них разные причины. Журнал ожиданий ведётся с 21.10 по каждому клиенту; за неделю вручную на счёте NPB торговал один клиент — счёт 605690. <span class="tag t-chk">замер</span></p>
     <div class="tablebox">
